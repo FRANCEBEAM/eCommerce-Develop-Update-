@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css");
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+// Colors
+$bg: #E1E1EA;
+$bg-hero: #DADAE2;
+$bg-black: #211F29;
+$bg-orange: #F9AB64;
+$bg-violet: #6F42C1;
+$font-black: #1D1E23;
+
+$font: 'Poppins', sans-serif;
+
+
+
+div.main-container{
+    font-family: $font;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+//TABLE
+div.cartList-container{
+    padding: 0 1em;
+    h4{
+      padding-top: 4em;
+      color: $font-black;
+    }
+    div.total-container{
+        margin-top: 7em;
+        h5.sub-total{
+          font-size: 20px;
+        }
+        a{
+          padding: .7em;
+          i{
+            width: 20px;
+          }
+        }
+      }
+  
+    div.card{
+     background: #ffff;
+      border-radius: 12px;
+      display: grid;
+      grid-template-columns: 2fr 2fr;
+      justify-content: center;
+      align-items: center;
+      img{
+        width: 120px;
+      }
+      div.card-body{
+        align-items: center;
+        padding: 0;
+        text-align: left;
+        h5{
+          padding-top: .8em;
+          font-weight: 600;
+          font-size: 18px;
+        }
+        p{
+          padding-top: .4em;
+          color: #6F6F6F;
+          font-size: 14px;
+        }
+        div.qty-container{
+          margin-top: 2em;
+          display: flex;
+          input#itemQty{
+              text-align: center;
+              width: 67px;
+              border: none;
+              -moz-appearance: textfield;
+          }
+          div.value-button{
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+            width: 40px;
+            padding: .2em;
+              i{
+                  font-size: 12px;
+              }
+          }
+      }
+      div.card-foot{
+        margin-top: 2em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h5.total{
+          font-size: 16px;
+        }
+        i.removeBtn{
+          padding: 0 .4em;
+          font-size: 26px;
+        }
+      }
+      }
+    }
+}
+
+div.modal-dialog{
+  div.modal-content{
+    div.modal-header{
+      h5{
+        font-size: 22px;
+      }
+    }
+    div.modal-body{
+      div#order{
+        div.displayOrder{
+          border: #888888 solid 1px;
+          border-radius: 7px;
+        }
+        h4{
+          font-size: 22px;
+          font-weight: 600;
+        }
+        h5{
+          text-align: left;
+          font-size: 16px;
+        }
+      }
+      form{
+        padding-top: 3em;
+
+    
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 768px){
+  div.cartList-container{
+    div.card{
+      padding: 0 2em;
+      div.img-container{
+        img{
+          width: 140px;
+        }
+       
+      }
+      
+      div.card-body{
+        h5{
+          font-size: 20px;
+        }
+        p{
+          font-size: 16px;
+        }
+
+        div.qty-container{
+          div.value-button{
+            max-width: 40px;
+          }
+        }
+        div.card-foot{
+       
+          h5{
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 993px){
+//NAVIGATION SECTION
+nav{
+  padding: 0 3em;
+}
+
+//CART LIST ITEM
+div.cartList-container{
+  div.card{
+    align-items: center;
+    justify-content: center;
+   display: flex;
+   flex-direction: row;
+   text-align: left;
+   div.img-container{
+    width: 20%;
+}
+
+
+   div.card-body{
+    padding: 1em;
+    h5{
+      padding: 0;
+      font-size: 18px;
+      margin-bottom: 0px;
+    }
+    p{
+      font-size: 16px;
+      padding-top: 0px;
+      margin-bottom: 0px;
+    }
+    div.qty-container{
+      margin-top: 0px;
+      align-items: center;
+      justify-content: center;
+
+      div.value-button{
+        padding: .8em;
+        max-width: 40px;
+      }
+    }
+
+    div.card-foot{
+      gap: 3em;
+      padding-top: 0px;
+      margin-bottom: 0px;
+      h5{
+        font-size: 20px;
+        margin-bottom: 0px;
+      }
+    }
+  }
+  }
+
+}
+}
+
+// LAPTOP VIEW 1200
+@media screen and(min-width: 1200px){
+  //Navigation
+  nav{
+    padding: 0 7em;
+  }
+
+  div.cartList-container{
+    padding: 0 6em;
+    div.card{
+      div.img-container{
+        width: 14%;
+      }
+      div.card-body{
+        h5{
+          font-size: 20px;
+        }
+        p{
+            font-size: 20px;
+        }
+        div.card-foot{
+          h5.total{
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  }
+  
+  // DESKTOP VIEW 1280
+  @media screen and (min-width: 1280px){
+      //HERO SECTION
+      div.hero-container{
+          padding-top: 4em;
+          div.left-content{
+              div.text-content{
+                  h1{
+                    font-size: 70px;          
+                  }
+              }
+              a.btn-dark{               
+                  width: 30%;
+                  padding: 1em;             
+                  }
+          }
+      }
+  
+      //SHOP CATEGORY
+      p.shopCateg{
+          font-size: 20px;
+          padding: 0 5em;
+      }
+  
+      // ITEM LIST
+      div.item-container{
+          button.btnModal{
+              img{
+                  max-width: 100%;
+              }
+              h5{
+                  font-size: 22px;
+              }
+              p{
+                  font-size: 20px;
+              }
+          }
+      
+          div.modal-card{
+              div.modal-content{
+                  div.modal-header{
+                      h5{
+                          font-size: 22px;
+                      }
+                  }
+      
+                  div.modal-body{
+      
+                      img{
+                          max-width: 100%;
+                      }
+                      div.col{
+                          h5{
+                              font-size: 22px;
+                          }
+                          p{
+                              font-size: 20px;
+                          }
+                      }
+      
+                      label.labelQty{
+                          margin-top: 3em;
+                      }
+                  }
+              }
+          }
+      }
+  
+
+  }
+  
+  @media screen and (min-width: 1390px){
+      div.cartList-container{
+        padding: 0 13em;  
+
+        div.card{
+            padding: 0 1em;
+
+        }
+    }
+
+  }

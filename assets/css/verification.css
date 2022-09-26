@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div.main-container {
+  padding: 2em 1em;
+  font: "Poppins", sans-serif;
+  padding-top: 6em;
+  color: #1D1E23;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+div.main-container div.head-content {
+  margin-top: 2em;
+}
+div.main-container div.head-content img {
+  width: 100px;
+}
+div.main-container div.head-content h2 {
+  font-size: 26px;
+  margin-top: 47px;
+  font-weight: 800;
+  color: #407BFF;
+}
+div.main-container div.head-content p {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 18px;
+}
+div.main-container div.head-content div.email {
+  margin: 0;
+  padding: 0;
+  font-weight: 300;
+  font-size: 16px;
+}
+div.main-container form {
+  margin-top: 2em;
+}
+div.main-container form input {
+  padding: 0.4em;
+}
+div.main-container form input.btnVerify {
+  text-transform: capitalize;
+  padding: 1em;
+  background: #0D6EFD;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    overflow: hidden;
+  }
+  div.main-container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: 580px;
+  }
+  div.main-container div.form-container {
+    margin-top: 2.4em;
+    border-radius: 12px;
+    padding: 5em;
+    background: #fff;
+    box-shadow: 10px 10px 5px -7px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 10px 10px 5px -7px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 10px 10px 5px -7px rgba(0, 0, 0, 0.4);
+  }
+  div.main-container div.form-container div.head-content {
+    margin: 0;
+  }
+  div.main-container div.form-container div.head-content img {
+    width: 100px;
+  }
+  div.main-container div.form-container div.head-content h1 {
+    margin-top: 47px;
+    font-weight: 800;
+    color: #407BFF;
+  }
+  div.main-container div.form-container div.head-content p {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  div.main-container div.form-container div.head-content div.email {
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+    font-size: 16px;
+  }
+  div.main-container div.form-container form {
+    justify-content: center;
+    align-items: center;
+  }
+  div.main-container div.form-container form input {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: 360px;
+  }
+}/*# sourceMappingURL=verification.css.map */

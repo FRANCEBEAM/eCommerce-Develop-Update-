@@ -1,0 +1,1 @@
+document.querySelector('#genderSelect').value = "";

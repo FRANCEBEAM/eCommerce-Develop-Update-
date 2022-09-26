@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Font
+$font: 'Poppins', sans-serif;
+
+// Colors
+$bg: #E1E1EA;
+$bg-hero: #DADAE2;
+$bg-black: #211F29;
+$bg-orange: #F9AB64;
+$bg-violet: #6F42C1;
+$font-black: #1D1E23;
+
+
+// Hero Section
+div.main-container{
+  font-family: $font;
+  background-color: #E1E1EA;
+  padding-top: 7em;
+  section.store-name{
+    padding: 0 1em;
+    h1{
+      span{
+        border-top: solid $bg-violet 7px;
+        content: ' ';
+        width: 3em;
+      }
+      text-align: center;
+      color: $font-black;
+      font-weight: bold;
+      font-size: 34px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    div.text-content{
+      p{
+        text-align: center;
+          line-height: 2em;
+        font-size: 14px;
+      }
+    }
+    img{
+      display: flex;
+     margin: 0 auto;
+    }
+  }
+
+  section.about-online{
+    padding: 4em 1em;
+    text-align: left;
+    h1{
+      color: $bg-black;
+      text-align: center;
+      font-weight: 600;
+    }
+    p{
+      text-align: center;
+      line-height: 2em;
+      font-size: 14px;
+    }
+  }
+
+  section.features{
+    padding: 0 1em;
+    h1{
+      font-weight: bold;
+      color: $bg-black;
+      text-align: center;
+    }
+    p{
+      text-align: center;
+    }
+    div.text-content{
+      p{
+        line-height: 2em;
+        font-size: 14px;
+        padding-top: 3em;
+        text-align: center;
+      }
+    }
+
+    div.shop-store {
+      padding-top: 3em;
+      img{
+        display: flex;
+        margin: 0 auto;
+      }
+    }
+
+    div.shop-security {
+      padding-top: 7em;
+      img{
+        display: flex;
+        margin: 0 auto;
+      }
+    }
+    
+    div.shop-details {
+      padding-top: 7em;
+      img{
+        display: flex;
+        margin: 0 auto;
+      }
+    }
+
+    div.participants{
+      padding-top: 5em;
+      padding-bottom: 4em;
+      div.profile{
+        img{
+          width: 50px;
+        }
+        padding: 0 1em;
+        display: flex;
+        gap: .8em;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+}
+
+//About Container
+section.about-container{
+  background: $bg-black;
+  color: #fff;
+}
+
+
+@media screen and(min-width: 574px){
+  // div.main-container{
+
+  // }
+}
+
+// @media screen and(min-width: 768px){
+//   //ITEM SECTION
+//   div.main-container{
+//     padding: 7em 0;
+//     section.hero-container{
+//       border-radius: 0;
+//     }
+//   }
+// }
+
+@media screen and(min-width: 993px){
+    nav{
+      padding: 0 3em;
+    }
+
+    div.main-container{
+      padding: 8em 4em;
+      section.store-name{
+        div.text-content{
+          p{
+            font-size: 16px;
+          }   
+        }
+      }
+      section.about-online{
+          p{
+            font-size: 16px;
+          }   
+      }
+      
+    section.features{
+      div.shop-store{
+        padding: 0;
+        margin-top: 4em;
+        display: grid;
+        grid-template-columns:  1fr 1fr;
+        grid-area: 'left right';
+        img{
+          width: 100%;
+        }
+        div.left-content{
+          grid: left;
+        }
+        h1{
+          padding: 0;
+          margin: 0;
+        }
+        div.text-content{
+          p{
+            padding: 0;
+            margin: 0;
+            font-size: 16px;
+          }   
+        }
+      }
+
+      div.shop-security{
+        padding: 0;
+        margin-top: 9em;
+        display: grid;
+        grid-template-columns:  1fr 1fr;
+        grid-template-areas: 'left-content right-content';
+
+        img{
+          width: 100%;
+        }
+        h1{
+          padding: 0;
+          margin: 0;
+        }
+        div.left-content{
+          grid-area: right-content;
+            p{
+              margin: 0;
+              font-size: 16px;
+            }   
+        }
+      }
+
+      div.shop-details{
+        padding: 0;
+        margin-top: 9em;
+        display: grid;
+        grid-template-columns:  1fr 1fr;
+        grid-template-areas: 'left-content right-content';
+
+        img{
+          width: 100%;
+        }
+        h1{
+          padding: 0;
+          margin: 0;
+        }
+        div.left-content{
+          grid-area: left-content;
+            p{
+              padding: 0;
+              margin: 0;
+              font-size: 16px;
+            }   
+        }
+      }
+    }
+    div.participants{
+      div.profile{
+        gap: 2em;
+        img{
+          cursor: pointer;
+          transition: all 0.2s ease-in-out;
+        }
+        img:hover {
+          transform: scale(1.4);
+          }
+      }
+    }
+  }
+}
+
+@media screen and(min-width: 1144px){
+
+}
+
+@media screen and(min-width: 1200px){
+  nav{
+    padding: 0 7em;
+  }
+
+  div.main-container{
+    padding: 9em 7em;
+    // div.participants{
+    //   div.profile{
+    //     gap: 2em;
+    //     img{
+    //       cursor: pointer;
+    //       transition: all 0.2s ease-in-out;
+    //     }
+    //     img:hover {
+    //       transform: scale(1.4);
+    //       }
+    //   }
+    // }
+  }
+
+  
+}
+

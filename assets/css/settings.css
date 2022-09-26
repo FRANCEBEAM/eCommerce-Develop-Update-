@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+div.main-container {
+  background: #F2F2F2;
+  font-family: "Poppins", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+div.main-container {
+  padding: 5em 1em;
+}
+div.main-container div.form-container div.left-content div.left-head {
+  padding: 1.7em;
+  background: #4656F5;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+div.main-container div.form-container div.left-content div.img-container img {
+  display: none;
+}
+div.main-container div.form-container div.right-content div.right-head {
+  padding: 2em;
+  align-items: center;
+  text-align: center;
+}
+div.main-container div.form-container div.right-content div.right-head h1 {
+  color: #212529;
+  font-weight: 600;
+}
+div.main-container div.form-container div.right-content div.right-head p {
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+}
+div.main-container div.form-container div.right-content div.form-content {
+  margin-bottom: 7em;
+}
+div.main-container div.form-container div.right-content div.form-content h1 {
+  font-size: 20px;
+  font-weight: normal;
+}
+div.main-container div.form-container div.right-content div.form-content input {
+  background: #D9D9D9;
+  border-radius: 7px;
+}
+div.main-container div.form-container div.right-content div.form-content button {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  div.main-container div.form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  div.main-container div.form-container div.left-content div.left-head h1 {
+    font-size: 22px;
+  }
+  div.main-container div.form-container div.left-content div.left-head p {
+    font-size: 14px;
+  }
+  div.main-container div.form-container div.left-content div.img-container img {
+    display: block;
+    width: 100%;
+  }
+  div.main-container div.form-container div.right-content div.right-head h1 {
+    font-size: 22px;
+  }
+  div.main-container div.form-container div.right-content div.right-head p {
+    font-size: 14px;
+  }
+  div.main-container div.form-container div.right-content form {
+    padding: 0 2em;
+  }
+}
+@media screen and (min-width: 993px) {
+  nav {
+    padding: 0 3em;
+  }
+  div.main-container div.form-container div.left-content h1 {
+    font-size: 26px;
+  }
+  div.main-container div.form-container div.right-content div.right-head h1 {
+    font-size: 26px;
+  }
+  div.main-container div.form-container div.right-content form {
+    padding: 1.8em;
+  }
+  div.main-container div.form-container div.right-content form h1 {
+    font-size: 24px;
+  }
+  div.main-container div.form-container div.right-content form p {
+    font-size: 16px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  nav {
+    padding: 0 7em;
+  }
+  div.main-container div.form-container {
+    padding: 0 5em;
+  }
+  div.main-container div.form-container div.left-content h1 {
+    font-size: 26px;
+  }
+  div.main-container div.form-container div.right-content div.right-head h1 {
+    font-size: 26px;
+  }
+  div.main-container div.form-container div.right-content form div.card {
+    padding: 1.8em;
+  }
+  div.main-container div.form-container div.right-content form div.card h1 {
+    font-size: 24px;
+  }
+  div.main-container div.form-container div.right-content form div.card p {
+    font-size: 16px;
+  }
+  div.main-container div.form-container div.right-content form button {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 1390px) {
+  div.main-container {
+    padding: 5em 10em;
+  }
+  div.main-container div.form-container {
+    padding: 0 4em;
+  }
+  div.main-container div.form-container form {
+    padding: 1.8em;
+  }
+  div.main-container div.form-container form h1 {
+    font-size: 24px;
+  }
+  div.main-container div.form-container form p {
+    font-size: 16px;
+  }
+}/*# sourceMappingURL=settings.css.map */

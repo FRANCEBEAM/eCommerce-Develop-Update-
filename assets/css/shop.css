@@ -1,0 +1,345 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+div.main-container {
+  background-color: #E1E1EA;
+  padding-top: 7em;
+}
+div.main-container section.hero-container {
+  padding: 3em 1em;
+  border-radius: 32px 32px 0 0;
+  background: #DADAE2;
+  box-shadow: 1px -2px 36px 3px rgba(0, 0, 0, 0.34);
+  -webkit-box-shadow: 1px -2px 36px 3px rgba(0, 0, 0, 0.34);
+  -moz-box-shadow: 1px -2px 36px 3px rgba(0, 0, 0, 0.34);
+}
+div.main-container section.hero-container div.left-content {
+  text-align: center;
+}
+div.main-container section.hero-container div.left-content h1 {
+  font-size: 28px;
+  color: #1D1E23;
+  font-weight: 800;
+}
+div.main-container section.hero-container div.left-content p {
+  padding-top: 2em;
+  font-size: 16px;
+  color: #1D1E23;
+  padding-bottom: 2em;
+}
+div.main-container section.hero-container div.left-content a.btnShop {
+  background: #6F42C1;
+  color: white;
+  font-weight: bold;
+  border-radius: 3px;
+}
+div.main-container section.hero-container div.right-content {
+  display: none;
+}
+
+section.store-container {
+  padding: 4em 1em;
+}
+section.store-container div.store iconify-icon {
+  font-size: 28px;
+}
+section.store-container div.store div.info-content {
+  display: flex;
+}
+section.store-container div.store div.info-content div.body-info {
+  text-align: left;
+  margin-left: 0.7em;
+}
+section.store-container div.store div.info-content div.body-info h5 {
+  font-weight: 600;
+  font-size: 16px;
+  color: #1D1E23;
+}
+section.store-container div.store div.info-content div.body-info p {
+  font-size: 14px;
+}
+
+section.product-container {
+  padding: 0 1em;
+}
+section.product-container div.search-container p {
+  font-size: 14px;
+}
+section.product-container div.search-container div.input-group {
+  width: 100%;
+  display: flex;
+}
+section.product-container div.search-container div.dropdown button {
+  text-transform: capitalize;
+  font-size: 14px;
+}
+section.product-container div.item-container {
+  padding: 2em 0;
+  display: grid;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+  grid-template-columns: 1fr 1fr;
+}
+section.product-container div.item-container div.card-container {
+  padding: 0.7em;
+  background: none;
+  margin: 0;
+}
+section.product-container div.item-container div.card-container img {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+section.product-container div.item-container div.card-container div.card-body {
+  padding: 0;
+  text-align: center;
+}
+section.product-container div.item-container div.card-container div.card-body h5 {
+  color: #1D1E23;
+  font-weight: bold;
+  font-size: 16px;
+}
+section.product-container div.item-container div.card-container a.addItemBtn {
+  color: #fff;
+  background: #6F42C1;
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 14px;
+}
+section.product-container div.item-container div.box {
+  margin: 0;
+}
+section.product-container div.item-container div.box i {
+  margin: 0;
+  font-size: 20px;
+}
+section.product-container div.pagination-container {
+  justify-content: center;
+  display: flex;
+  margin-bottom: 2em;
+}
+
+section.about-container {
+  background: #211F29;
+  color: #fff;
+}
+
+@media screen and (min-width: 574px) {
+  div.main-container section.product-container div.item-container {
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 0 1em;
+  }
+}
+@media screen and (min-width: 768px) {
+  div.main-container {
+    padding: 7em 0;
+  }
+  div.main-container section.hero-container {
+    border-radius: 0;
+  }
+  div.main-container section.hero-container div.left-content h1 {
+    font-size: 32px;
+  }
+  div.main-container section.hero-container div.left-content p {
+    padding: 2em 4em;
+    font-size: 16px;
+  }
+  div.main-container div.item-container {
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 0 1em;
+  }
+  div.main-container div.item-container div.card-container a {
+    max-width: 137px;
+    margin: 0 auto;
+  }
+  div.main-container section.product-container div.pagination-container {
+    margin: 0;
+  }
+}
+@media screen and (min-width: 993px) {
+  nav {
+    padding: 0 3em;
+  }
+  div.main-container {
+    padding: 4em 0;
+  }
+  div.main-container section.hero-container {
+    box-shadow: none;
+    padding: 4em 4em;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+  }
+  div.main-container section.hero-container div.left-content {
+    padding-top: 3em;
+    text-align: left;
+    margin: 0;
+  }
+  div.main-container section.hero-container div.left-content h1 {
+    font-size: 28px;
+    margin-bottom: 1em;
+  }
+  div.main-container section.hero-container div.left-content p {
+    font-size: 16px;
+    padding: 0;
+    margin-bottom: 1.8em;
+  }
+  div.main-container section.hero-container div.right-content {
+    display: block;
+  }
+  div.main-container section.hero-container div.right-content img {
+    display: flex;
+    justify-content: flex-end;
+    width: 500px;
+    right: 0;
+    float: inline-end;
+  }
+  div.main-container section.store-container {
+    padding: 4em 4em;
+  }
+  div.main-container section.store-container div.store {
+    display: flex;
+  }
+  div.main-container section.store-container div.info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8em;
+  }
+  div.main-container section.store-container div.info-content div.body-info {
+    justify-content: space-between;
+    margin: 0;
+    width: 300px;
+  }
+  div.main-container section.store-container div.info-content div.body-info h5 {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  div.main-container section.store-container div.info-content div.body-info p {
+    padding-top: 0.8em;
+    font-size: 14px;
+  }
+  div.main-container section.product-container {
+    padding: 0 4em;
+  }
+  div.main-container section.product-container p {
+    color: #1D1E23;
+    font-size: 20px;
+  }
+  div.main-container section.product-container p.popular {
+    font-size: 16px;
+  }
+  div.main-container section.product-container div.dropdown button {
+    box-shadow: none;
+    background: none;
+    text-align: left;
+    padding: 1.4em;
+    font-size: 18px;
+    font-weight: bold;
+    color: #1D1E23;
+  }
+  div.main-container section.product-container div.item-container {
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  div.main-container section.product-container div.item-container div.card-container a.addItemBtn {
+    color: #fff;
+    background-color: #6F42C1;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 0 4px #999;
+    background-position: center;
+    transition: background 0.6s;
+  }
+  div.main-container section.product-container div.item-container div.card-container a.addItemBtn:hover {
+    background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%) center/15000%;
+    color: white;
+  }
+  div.main-container section.product-container div.item-container div.card-container a.addItemBtn:active {
+    background-color: #292d3e;
+    background-size: 100%;
+    transition: background 0s;
+  }
+}
+@media screen and (min-width: 1144px) {
+  div.main-container section.hero-container {
+    padding: 4em 4em;
+  }
+  div.main-container section.hero-container h1 {
+    align-items: center;
+    justify-items: center;
+  }
+}
+@media screen and (min-width: 1200px) {
+  nav {
+    padding: 0 7em;
+  }
+  div.main-container section.hero-container {
+    padding: 4em 8em;
+    grid-template-columns: 1fr 1fr;
+  }
+  div.main-container section.hero-container div.left-content h1 {
+    padding-top: 1em;
+    font-size: 38px;
+  }
+  div.main-container section.hero-container div.left-content p {
+    font-size: 16px;
+    width: 450px;
+  }
+  div.main-container section.hero-container div.right-content img {
+    width: 600px;
+  }
+  div.main-container section.store-container {
+    padding: 4em 8em;
+  }
+  div.main-container section.store-container div.store {
+    gap: 4em;
+  }
+  div.main-container section.store-container div.info-content div.body-info h5 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  div.main-container section.product-container {
+    padding: 4em 8em;
+  }
+  div.main-container section.product-container div.search-container input {
+    padding: 0.4em;
+  }
+  div.main-container section.product-container div.search-container label {
+    font-size: 16px;
+    align-items: center;
+  }
+}
+@media screen and (min-width: 1280px) {
+  div.main-container section.hero-container div.left-content h1 {
+    padding-top: 0.4em;
+    font-size: 43px;
+  }
+  div.main-container section.hero-container div.left-content p {
+    font-size: 18px;
+  }
+  div.main-container section.store-container div.store {
+    gap: 7em;
+  }
+  div.main-container section.store-container div.info-content div.body-info p {
+    text-align: left;
+    width: 378px;
+  }
+}/*# sourceMappingURL=shop.css.map */

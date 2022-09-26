@@ -1,0 +1,206 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div.main-container {
+  font-family: "Poppins", sans-serif;
+  background-color: #E1E1EA;
+  padding-top: 7em;
+}
+div.main-container section.store-name {
+  padding: 0 1em;
+}
+div.main-container section.store-name h1 {
+  text-align: center;
+  color: #1D1E23;
+  font-weight: bold;
+  font-size: 34px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+div.main-container section.store-name h1 span {
+  border-top: solid #6F42C1 7px;
+  content: " ";
+  width: 3em;
+}
+div.main-container section.store-name div.text-content p {
+  text-align: center;
+  line-height: 2em;
+  font-size: 14px;
+}
+div.main-container section.store-name img {
+  display: flex;
+  margin: 0 auto;
+}
+div.main-container section.about-online {
+  padding: 4em 1em;
+  text-align: left;
+}
+div.main-container section.about-online h1 {
+  color: #211F29;
+  text-align: center;
+  font-weight: 600;
+}
+div.main-container section.about-online p {
+  text-align: center;
+  line-height: 2em;
+  font-size: 14px;
+}
+div.main-container section.features {
+  padding: 0 1em;
+}
+div.main-container section.features h1 {
+  font-weight: bold;
+  color: #211F29;
+  text-align: center;
+}
+div.main-container section.features p {
+  text-align: center;
+}
+div.main-container section.features div.text-content p {
+  line-height: 2em;
+  font-size: 14px;
+  padding-top: 3em;
+  text-align: center;
+}
+div.main-container section.features div.shop-store {
+  padding-top: 3em;
+}
+div.main-container section.features div.shop-store img {
+  display: flex;
+  margin: 0 auto;
+}
+div.main-container section.features div.shop-security {
+  padding-top: 7em;
+}
+div.main-container section.features div.shop-security img {
+  display: flex;
+  margin: 0 auto;
+}
+div.main-container section.features div.shop-details {
+  padding-top: 7em;
+}
+div.main-container section.features div.shop-details img {
+  display: flex;
+  margin: 0 auto;
+}
+div.main-container section.features div.participants {
+  padding-top: 5em;
+  padding-bottom: 4em;
+}
+div.main-container section.features div.participants div.profile {
+  padding: 0 1em;
+  display: flex;
+  gap: 0.8em;
+  align-items: center;
+  justify-content: center;
+}
+div.main-container section.features div.participants div.profile img {
+  width: 50px;
+}
+
+section.about-container {
+  background: #211F29;
+  color: #fff;
+}
+
+@media screen and (min-width: 993px) {
+  nav {
+    padding: 0 3em;
+  }
+  div.main-container {
+    padding: 8em 4em;
+  }
+  div.main-container section.store-name div.text-content p {
+    font-size: 16px;
+  }
+  div.main-container section.about-online p {
+    font-size: 16px;
+  }
+  div.main-container section.features div.shop-store {
+    padding: 0;
+    margin-top: 4em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-area: "left right";
+  }
+  div.main-container section.features div.shop-store img {
+    width: 100%;
+  }
+  div.main-container section.features div.shop-store div.left-content {
+    grid: left;
+  }
+  div.main-container section.features div.shop-store h1 {
+    padding: 0;
+    margin: 0;
+  }
+  div.main-container section.features div.shop-store div.text-content p {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+  }
+  div.main-container section.features div.shop-security {
+    padding: 0;
+    margin-top: 9em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "left-content right-content";
+  }
+  div.main-container section.features div.shop-security img {
+    width: 100%;
+  }
+  div.main-container section.features div.shop-security h1 {
+    padding: 0;
+    margin: 0;
+  }
+  div.main-container section.features div.shop-security div.left-content {
+    grid-area: right-content;
+  }
+  div.main-container section.features div.shop-security div.left-content p {
+    margin: 0;
+    font-size: 16px;
+  }
+  div.main-container section.features div.shop-details {
+    padding: 0;
+    margin-top: 9em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "left-content right-content";
+  }
+  div.main-container section.features div.shop-details img {
+    width: 100%;
+  }
+  div.main-container section.features div.shop-details h1 {
+    padding: 0;
+    margin: 0;
+  }
+  div.main-container section.features div.shop-details div.left-content {
+    grid-area: left-content;
+  }
+  div.main-container section.features div.shop-details div.left-content p {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+  }
+  div.main-container div.participants div.profile {
+    gap: 2em;
+  }
+  div.main-container div.participants div.profile img {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  div.main-container div.participants div.profile img:hover {
+    transform: scale(1.4);
+  }
+}
+@media screen and (min-width: 1200px) {
+  nav {
+    padding: 0 7em;
+  }
+  div.main-container {
+    padding: 9em 7em;
+  }
+}/*# sourceMappingURL=about.css.map */
