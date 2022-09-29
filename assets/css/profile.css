@@ -59,12 +59,14 @@ div.main-container div.form-container div.card {
 div.main-container div.form-container div.card p {
   color: #535353;
 }
-div.main-container div.form-container div.card input {
-  background: #D9D9D9;
-}
 div.main-container div.form-container button {
   display: block;
   width: 100%;
+  padding: 1em;
+  background: #0D6EFD;
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 16px;
 }
 
 @media screen and (min-width: 768px) {

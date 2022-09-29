@@ -47,9 +47,10 @@ div.main-container{
     }
     form{
       margin-top: 9em;
-      // input{
-      //   margin-bottom: 1.7em;
-      // }
+      input{
+        -webkit-appearance: none; 
+        -moz-appearance: textfield; 
+      }
       button{
         background: #2C52D8;
         font-weight: bold;
@@ -87,9 +88,9 @@ div.main-container{
 }
 
 @media screen and(min-width: 993px){
-    body{
-      overflow: hidden;
-    }
+    // body{
+    //   overflow: hidden;
+    // }
     nav{
       padding: 0 3em;
     }
@@ -191,9 +192,9 @@ div.main-container{
 }
 
 @media screen and (min-width: 1380px){
-  body{
-    overflow: hidden;
-  }
+  // body{
+  //   overflow: hidden;
+  // }
   div.main-container{
     padding: 2em 12em;
     div.form-container{

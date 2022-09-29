@@ -23,6 +23,10 @@ if (isset($_POST["signup"])){
     $email = $_POST["email"];
     $password = $_POST["password"];
     $conpassword = $_POST["conpassword"];
+    $phone = $_POST["phone"];
+    $address = $_POST["address"];
+    $birthdate = $_POST["birthdate"];
+    $gender = $_POST["gender"];
 
     $check_email = mysqli_num_rows(mysqli_query($conn, "SELECT email FROM users WHERE email='$email'"));
     $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
@@ -33,10 +37,10 @@ if (isset($_POST["signup"])){
     }elseif ($check_email > 0) {
       $errors['email'] = "Email that you have entered is already exist!";
      }else{
-        $sql = "INSERT INTO users(firstname, lastname, username, email, password, verification_code, email_verified_at) VALUES ('" . $firstname . "', '" . $lastname . "', '" . $username . "', '" . $email . "', '" . $encrypted_password . "', '" . $verification_code . "', NULL)";
+        $sql = "INSERT INTO users(firstname, lastname, username, email, phone, address, birthdate, gender , password, verification_code, email_verified_at) VALUES ('" . $firstname . "', '" . $lastname . "', '" . $username . "', '" . $email . "','" . $phone . "', '" . $address . "', '" . $birthdate . "', '" . $gender . "', '" . $encrypted_password . "', '" . $verification_code . "', NULL)";
+
         $result = mysqli_query($conn, $sql);
 
-    
     if($result){
 
     //Instantiation and passing `true` enables exceptions
@@ -78,9 +82,31 @@ if (isset($_POST["signup"])){
         $mail->isHTML(true);
 
         // $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
-
         $mail->Subject = 'Email verification';
-        $mail->Body    = '<p>Your verification code is: <b style="font-size: 30px;">' . $verification_code . '</b></p>';
+        $mail->Body = '<p style="font-size: 20px";>
+        <div style="background-color: #0D6EFD; width:100%; padding: 3em;"></div>
+        <img src="https://cdn-icons-png.flaticon.com/512/4144/4144845.png" width="8%" height="8%"/>
+        <h2><b>Verify email address.</b></h2>
+        Hi '.$firstname.',     
+         <br>
+         <br>
+        Thank you for signing up for R.J. Avanceña Store, to get started, we need to verify your email address.
+        <br>
+        <br>
+        Your verification code is: <b style="font-size: 20px; border: 2px solid black; padding: 5px;">' . $verification_code . '</b>       
+        <br>
+        <br>
+        Enter this code in our website to activate your account.
+        <br>
+        <br>
+        <br>
+        <b>Need Support?</b>
+        <br>
+        Feel free to message us if you have any questions, concerns and suggestions. We\'ll be happy to resolve your issues.
+        <br>
+        <br>
+        Thank you!
+        </p>';
 
         $mail->send();
         // echo 'Message has been sent';
@@ -224,6 +250,46 @@ if (isset($_POST["signup"])){
         </div>
         <small class="errorEmail"></small>
       </div>
+
+      <!-- Phone input -->
+      <div class="col mb-4">
+        <div class="form-outline">
+          <input type="number" class="form-control" id="phone" name="phone"/>
+          <label class="form-label" for="phone">Phone number</label>
+        </div>
+        <small class="errorEmail"></small>
+      </div>
+
+      <!-- Address input -->
+      <div class="col mb-4">
+        <div class="form-outline">
+          <input type="text" class="form-control" id="address" name="address"/>
+          <label class="form-label" for="address">Address</label>
+        </div>
+        <small class="errorEmail"></small>
+      </div>
+
+      <!-- Birthdate input -->
+      <div class="col mb-4">
+        <div class="input-group date" id="datepicker">
+            <input type="text" class="form-control date" id="datepicker" name="birthdate">
+            <span class="input-group-append">
+                <span class="input-group-text bg-white">
+                    <i class="fa fa-calendar"></i>
+                </span>
+            </span>   
+          </div>
+      </div>
+
+      <!-- Gender input -->
+      <div class="input-group mb-3">
+          <select class="form-select" id = "genderSelect" aria-label="Default select example" name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+
+      
       
         <!-- Password input -->
         <div class="col mb-4">
@@ -267,5 +333,16 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"
   AOS.init();
 </script>
 <!-- <script src="/assets/js/signupConfig.js"></script> -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+<script>
+        $(function() {
+            $('#datepicker').datepicker();
+        });
+</script>
+
 </body>
 </html>

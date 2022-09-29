@@ -34,6 +34,10 @@ div.main-container div.right-content small {
 div.main-container div.right-content form {
   margin-top: 9em;
 }
+div.main-container div.right-content form input {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
 div.main-container div.right-content form button {
   background: #2C52D8;
   font-weight: bold;
@@ -49,9 +53,6 @@ div.main-container div.right-content form small {
   }
 }
 @media screen and (min-width: 993px) {
-  body {
-    overflow: hidden;
-  }
   nav {
     padding: 0 3em;
   }
@@ -131,9 +132,6 @@ div.main-container div.right-content form small {
   }
 }
 @media screen and (min-width: 1380px) {
-  body {
-    overflow: hidden;
-  }
   div.main-container {
     padding: 2em 12em;
   }

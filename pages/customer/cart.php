@@ -139,7 +139,7 @@ if (!isset($_SESSION['email'])) {
         $grand_total = $grand_total+($row['qty']*$row['price']);
 
     ?>
-  <div class="card mb-2">
+  <div class="card product_data mb-2">
     <div class="img-container">
           <img src="/assets/img/product 1.png" alt="">
     </div>
@@ -150,15 +150,15 @@ if (!isset($_SESSION['email'])) {
     
   <div class="qty-container">
     <form id="frm<?php echo $row['id'] ?>">
-      <input type="hidden" name="cart_id" value="<?php  echo $row['id'];?>">
+      <input type="hidden" class="cart_id" name="cart_id" value="<?php  echo $row['id'];?>">
 
       <!-- Quantity Container -->
       <div class="qty-container">
-        <div class="btn btn-outline-dark value-button changeQuantity" id="decrease" onclick="decreaseValue()" value="Decrease Value"><i class="fa-sharp fa-solid fa-minus"></i></div>
+        <div class="btn btn-outline-dark value-button decrementBtn updateQty" id="decrease"  value="Decrease Value"><i class="fa-sharp fa-solid fa-minus"></i></div>
      
-        <input type="number" class="form-control itemQty" name="qty" id="itemQty" value="<?php echo $row['qty']; ?>" onchange="updcart(<?php echo $row['id'];  ?>)" onkeyup="updcart(<?php echo $row['id'];  ?>)">
+        <input type="number" class="form-control itemQty" name="qty" id="itemQty" value="<?php echo $row['qty']; ?>">
 
-        <div class="btn btn-dark value-button changeQuantity" id="increase" onclick="increaseValue()" value="Increase Value"><i class="fa-sharp fa-solid fa-plus"></i></div>
+        <div class="btn btn-dark value-button incrementBtn updateQty" id="increase" value="Increase Value"><i class="fa-sharp fa-solid fa-plus"></i></div>
       </div>
 
         
@@ -264,142 +264,8 @@ if (!isset($_SESSION['email'])) {
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<script>
-$(document).ready(function() {
+<script src="/assets/js/addcart.js"></script>
 
-// Send product details in the server
-$(".addItemBtn").click(function(e) {
-  e.preventDefault();
-  var $form = $(this).closest(".form-submit");
-  var id = $form.find(".id").val();
-  var product = $form.find(".product").val();
-  var price = $form.find(".price").val();
-  var image_file = $form.find(".image_file").val();
-  var serialnumber = $form.find(".serialnumber").val();
-
-  var quantity = $form.find(".quantity").val();
-
-  $.ajax({
-    url: '../customer/config/action.php',
-    method: 'post',
-    data: {
-      id: id,
-      product: product,
-      price: price,
-      quantity: quantity,
-      image_file: image_file,
-      serialnumber: serialnumber
-    },
-    success: function(response) {
-      $("#message").html(response);
-      // window.scrollTo(0, 0);
-      load_cart_item_number();
-    }
-  });
-});
-
-// Load total no.of items added in the cart and display in the navbar
-load_cart_item_number();
-
-function load_cart_item_number() {
-  $.ajax({
-    url: '../customer/config/action.php',
-    method: 'get',
-    data: {
-      cartItem: "cart_item"
-    },
-    success: function(response) {
-      $("#cart-item").html(response);
-    }
-  });
-}
-
-
-  $(".btnRemove").on('click', function(e) {
-      e.preventDefault();
-
-      const href = $(this).attr('href')
-
-      Swal.fire({
-      title: 'Remove from the cart?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Remove'
-    }).then((result) => {
-      if (result.value) {
-          document.location.href = href;
-      }
-    })
-  });
-
-      // Sending Form data to the server
-      $("#placeOrder").submit(function(e) {
-        e.preventDefault(); 
-  
-        $.ajax({
-          url: '../customer/config/action.php',
-          method: 'post',
-          data: $('form').serialize() + "&action=order",
-          success: function(response) {
-            $("#order").html(response);
-            window.scrollTo(0, 0);
-            load_cart_item_number();
-          }
-        });
-      });
-
-      $('#modalOrder').on('hidden.bs.modal', function () {
-        location.reload();
-       })
-  
-});
-
-
-function updcart(id){
-$.ajax({
-  url:'/pages/customer/updqty.php',
-  type:'POST',
-  data:$("#frm"+id).serialize(),
-  success:function(res){
-    location.reload(true);
-    // $("#cartcart").html(res);
-  }
-});
-
-}
-
-  // Update Cart Data
-  $(document).ready(function () {
-
-$('.changeQuantity').click(function (e) {
-    e.preventDefault();
-
-    var quantity = $(this).closest(".cartList-container").find('.itemQty').val();
-    var product_id = $(this).closest(".cartList-container").find('.card-title').val();
-
-    var data = {
-        '_token': $('input[name=_token]').val(),
-        'quantity':quantity,
-        'card-title':card-title,
-    };
-
-    $.ajax({
-        url: '/update-to-cart',
-        type: 'POST',
-        data: data,
-        success: function (response) {
-            window.location.reload();
-            alertify.set('notifier','position','top-right');
-            alertify.success(response.status);
-        }
-    });
-});
-
-});
-
-</script>
 
 </body>
 </html>

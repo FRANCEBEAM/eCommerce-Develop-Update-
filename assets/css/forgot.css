@@ -23,7 +23,7 @@ div.main-container div.head-content img {
 div.main-container div.head-content h2 {
   font-size: 26px;
   font-weight: 800;
-  color: #407BFF;
+  color: #1D1E23;
 }
 div.main-container div.head-content p.sent {
   margin-top: 20px;
@@ -121,4 +121,4 @@ div.main-container form button.btnVerify {
   nav {
     padding: 0 7em;
   }
-}/*# sourceMappingURL=verification.css.map */
+}/*# sourceMappingURL=forgot.css.map */

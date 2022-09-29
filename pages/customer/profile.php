@@ -10,11 +10,11 @@ $success = "";
 if (isset($_POST["btnSave"])) {
 $phone = mysqli_real_escape_string($conn, $_POST["phone"]);
 $address = mysqli_real_escape_string($conn, $_POST["address"]);
-$datebirth = mysqli_real_escape_string($conn, $_POST["datebirth"]);
+$birthdate = mysqli_real_escape_string($conn, $_POST["birthdate"]);
 $gender = mysqli_real_escape_string($conn, $_POST["gender"]);
 
 
-$sql = "UPDATE users SET phone='$phone', address='$address', datebirth='$datebirth', gender= '$gender' WHERE email='{$_SESSION["email"]}'";
+$sql = "UPDATE users SET phone='$phone', address='$address', birthdate='$birthdate', gender= '$gender' WHERE email='{$_SESSION["email"]}'";
 $result = mysqli_query($conn, $sql);
 if ($result) {
     $success = 'Profile updated successfully';
@@ -208,7 +208,7 @@ $fetch_info = mysqli_fetch_assoc($run_Sql);
               </div>
               <p class="card-text">Fill your date of birth to recognize your age. This will consider as your information.</p>
               <div class="input-group mb-3">
-              <input type='text' class="form-control" name="datebirth" placeholder= "mm/dd/yyyy" value='<?php echo $fetch_info['datebirth'] ?>'>
+              <input type='text' class="form-control" name="birthdate" placeholder= "mm/dd/yyyy" value='<?php echo $fetch_info['birthdate'] ?>'>
               </div>
             </div>
           </div>
@@ -218,9 +218,10 @@ $fetch_info = mysqli_fetch_assoc($run_Sql);
               <div class="card-head">
                 <h1 class="mb-4">Gender: <i class="fa-sharp fa-solid fa-person"></i></i></h1>
               </div>
-              <p class="card-text">Select what a type of person are you.</p>
-              <div class="input-group mb-3">
-                <select class="form-select" id = "genderSelect" aria-label="Default select example" name="gender">
+              <p class="card-text">Setup your identity.</p>
+
+              <div class="input-group mb-3" style="padding-top:24px;">
+                <select class="form-select"" id = "genderSelect" aria-label="Default select example" name="gender">
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                 </select>
