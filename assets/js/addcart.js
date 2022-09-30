@@ -8,7 +8,9 @@ $(".addItemBtn").click(function(e) {
   var id = $form.find(".id").val();
   var product = $form.find(".product").val();
   var price = $form.find(".price").val();
+  var supplier = $form.find(".supplier").val();
   var image_file = $form.find(".image_file").val();
+  var image_path = $form.find(".image_path").val();
   var serialnumber = $form.find(".serialnumber").val();
 
   var quantity = $form.find(".quantity").val();
@@ -19,9 +21,11 @@ $(".addItemBtn").click(function(e) {
     data: {
       id: id,
       product: product,
+      supplier: supplier,
       price: price,
       quantity: quantity,
       image_file: image_file,
+      image_path: image_path,
       serialnumber: serialnumber
     },
     success: function(response) {
@@ -111,15 +115,19 @@ $(document).ready(function (){
     e.preventDefault()
 
     var inputQty = $(this).closest('.product_data').find('.itemQty').val();
+    var maxQty = $(this).closest('.product_data').find('.prodQty').val();
     
-    var value = parseInt(inputQty, 10);
-    value = isNaN(value) ? 0 : value;
-    if(value < 200){
-      value++;
+    
+    var value = parseInt(inputQty);
+    // var maxVal = parseInt(maxQty);
 
+    value = isNaN(value) ? 0 : value;
+    if(value <maxQty){
+      value++;
       $(this).closest('.product_data').find('.itemQty').val(value);
     }
   })
+
 
   $('.decrementBtn').click(function(e){
     e.preventDefault()
@@ -128,7 +136,7 @@ $(document).ready(function (){
     
     var value = parseInt(inputQty, 10);
     value = isNaN(value) ? 0 : value;
-    if(value > 50){
+    if(value > 1){
       value--;
    
       $(this).closest('.product_data').find('.itemQty').val(value);

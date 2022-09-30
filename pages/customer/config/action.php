@@ -6,9 +6,11 @@ require 'connection.php';
 if (isset($_POST['id'])) {
 	$id = $_POST['id'];
 	$email = $_SESSION['email']; //getting this email using session
-	$product = $_POST['product']; // product name from db
+	$product = $_POST['product']; // product name from inventory
+	$supplier = $_POST['supplier']; // supplier name from inventory
 	$price = $_POST['price']; // product price
 	$image_file = $_POST['image_file']; // product image
+	$image_path = $_POST['image_path']; // product image
 	$serialnumber = $_POST['serialnumber']; // product serial number
 	$quantity = $_POST['quantity']; // product quantity
 
@@ -22,8 +24,8 @@ if (isset($_POST['id'])) {
 	$code = $r['serialnumber'] ?? '';
 
 	if (!$code) {
-		$query = $conn->prepare('INSERT INTO cart (email, product, price, image_file, qty ,total_price, serialnumber) VALUES (?,?,?,?,?,?,?)');
-		$query->bind_param('sssssss', $email, $product, $price, $image_file, $quantity, $total_price, $serialnumber);
+		$query = $conn->prepare('INSERT INTO cart (email, product, supplier, price, image_file, image_path, qty ,total_price, serialnumber) VALUES (?,?,?,?,?,?,?,?,?)');
+		$query->bind_param('sssssssss', $email, $product, $supplier, $price, $image_file, $image_path, $quantity, $total_price, $serialnumber);
 		$query->execute();
 
 		echo '<script>

@@ -49,7 +49,7 @@ div.main-container form input[type=number]::-webkit-outer-spin-button {
   -moz-appearance: textfield;
   margin: 0;
 }
-div.main-container form button.resetPassword {
+div.main-container form button.btnReset {
   text-transform: capitalize;
   padding: 1em;
   background: #0D6EFD;
@@ -69,6 +69,7 @@ div.main-container form button.resetPassword {
     width: 580px;
   }
   div.main-container div.form-container {
+    margin-top: 2.4em;
     border-radius: 12px;
     padding: 5em;
     background: #fff;
@@ -83,6 +84,7 @@ div.main-container form button.resetPassword {
     width: 100px;
   }
   div.main-container div.form-container div.head-content h1 {
+    margin-top: 47px;
     font-weight: 800;
     color: #407BFF;
   }
@@ -119,4 +121,4 @@ div.main-container form button.resetPassword {
   nav {
     padding: 0 7em;
   }
-}/*# sourceMappingURL=newpass.css.map */
+}/*# sourceMappingURL=resetcode.css.map */

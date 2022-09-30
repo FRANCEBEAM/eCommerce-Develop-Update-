@@ -49,7 +49,7 @@ div.main-container form input[type=number]::-webkit-outer-spin-button {
   -moz-appearance: textfield;
   margin: 0;
 }
-div.main-container form button.btnVerify {
+div.main-container form a.btnSign {
   text-transform: capitalize;
   padding: 1em;
   background: #0D6EFD;

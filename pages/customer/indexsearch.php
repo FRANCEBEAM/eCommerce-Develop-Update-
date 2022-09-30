@@ -22,7 +22,7 @@ if(mysqli_num_rows($result) > 0)
 	{
 		$output .= '
     <div class="mb-5 card-container">
-    <img src="/assets/img/product 1.png" class="card-img-top">
+    <img src='.$row["image_path"].' class="card-img-top">
     <div class="card-body">
       <h5 class="card-title mt-3"><b><i class="fa-solid fa-peso-sign"></i>&nbsp;'.$row["price"].'</b></h5>
       <p class="card-text m-0">'.$row["product"].'</p>

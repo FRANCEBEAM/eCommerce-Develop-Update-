@@ -1,26 +1,38 @@
 <?php
-
 require 'config/connection.php';
 session_start();
+$errors = array();
 
-if (isset($_POST["resetPassword"])) {
-  $email = mysqli_real_escape_string($conn, $_POST['email']);
-  $password = mysqli_real_escape_string($conn, md5($_POST["newpass"]));
-  $cpassword = mysqli_real_escape_string($conn, md5($_POST["connewpass"]));
-
-  if ($password === $cpassword) {
-    $sql = "UPDATE users SET password='$password' WHERE email = '$email' ";
-    mysqli_query($conn, $sql);
-    header("Location: signin.php");
-  } else {
-    echo "<script>alert('Password not matched.');</script>";
+    //IF USER CLICK THE CHANGE PASSWORD BUTTON
+    if(isset($_POST['resetPassword'])){
+      $_SESSION['info'] = "";
+      $password = $_POST['password'];
+      $cpassword = $_POST["cpassword"];
+      if($password !== $cpassword){
+          $errors['password'] = "Confirm password not matched!";
+      }else{
+          $code = 0;
+          $email = $_SESSION['email']; //getting this email using session
+          $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
+          $update_pass = "UPDATE users SET verification_code = $code, password = '$encrypted_password' WHERE email = '$email'";
+          $run_query = mysqli_query($conn, $update_pass);
+          if($run_query){
+              $info = "Your password changed. Now you can login with your new password.";
+              $_SESSION['info'] = $info;
+              header("Location: ../customer/changed.php");
+          }else{
+              $errors['db-error'] = "Failed to change your password!";
+          }
+      }
   }
-}
-
-
 ?>
 
-
+<?php 
+$email = $_SESSION['email'];
+if (!isset($_SESSION['email'])) {
+  header("Location: signin.php");
+}
+?>
 
 
 <!DOCTYPE html>
@@ -90,18 +102,31 @@ if (isset($_POST["resetPassword"])) {
 <div class="main-container">
   <div class="form-container">
     <div class="head-content">
-        <h2 class="mb-5">New Password</h2>
+        <h2 class="mb-5 text">Create new password</h2>
         <img class="mb-4" src="/assets/img/newpass.png" alt="">
-        <p class="mb-0">Create new password.</p>
+
+                    <?php
+                    if(count($errors) > 0){
+                        ?>
+                        <div class="alert alert-danger text-center">
+                            <?php
+                            foreach($errors as $showerror){
+                                echo $showerror;
+                            }
+                            ?>
+                        </div>
+                        <?php
+                    }
+                    ?>
     </div>
 
     <form method="POST">
 
-        <input type="password" class="form-control form-control-lg mb-3" name="newpass" placeholder="New password" required />
-        <input type="password" class="form-control form-control-lg mb-3" name="connewpass" placeholder="Confirm password" required />
+        <input type="password" class="form-control form-control-lg mb-3" name="password" placeholder="New password" required />
+        <input type="password" class="form-control form-control-lg mb-3" name="cpassword" placeholder="Confirm password" required />
         <br>
 
-        <button type="submit" class="btn btn-primary btn-lg btn-block resetPassword" name="verify_email">Change</button>
+        <button type="submit" class="btn btn-primary btn-lg btn-block resetPassword" name="resetPassword">Change</button>
     </form>
   </div>
 </div>

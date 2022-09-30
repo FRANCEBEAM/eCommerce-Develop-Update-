@@ -14,14 +14,16 @@ require 'config/connection.php';
 
       $check_email = mysqli_query($conn, "SELECT * FROM users WHERE email='$email'");
       $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
-      $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
 
       if(mysqli_num_rows($check_email) > 0){
-
-          $mail = new PHPMailer(true);
+          $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
+          $insert_code = "UPDATE users SET verification_code = $verification_code WHERE email = '$email'";
+          $run_query =  mysqli_query($conn, $insert_code);
+       
 
           $message= '<p>Your reset verification code is: <b style="font-size: 30px;">' . $verification_code . '</b></p>';
-      
+          $mail = new PHPMailer(true);
+
           try {
               //Enable verbose debug output
               $mail->SMTPDebug = 0;//SMTP::DEBUG_SERVER;
@@ -68,8 +70,8 @@ require 'config/connection.php';
               $_SESSION['email'] = $email;
 
 
-            $info = "We've sent a passwrod reset otp to your email - $email";
-              header("Location: ../customer/newpassword.php");
+            // $info = "We've sent a passwrod reset otp to your email - $email";
+              header("Location: ../customer/resetcode.php");
               exit();
           } catch (Exception $e) {
               echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -170,7 +172,7 @@ require 'config/connection.php';
     <form method="POST">
 
 
-        <input type="text" class="form-control form-control-lg" name="email" placeholder="Your email address" required  value="<?php echo $email ?>">
+        <input type="email" class="form-control form-control-lg" name="email" placeholder="Your email address" required >
         <br>
 
         <button type="submit" class="btn btn-primary btn-lg btn-block btnVerify" name="checkEmail">Continue</button>

@@ -19,12 +19,8 @@ if (!isset($_SESSION['email'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cart</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
+  <?php include 'links/header.php' ?>
   <link rel="stylesheet" href="/assets/css/cart.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet"/>
 <link rel="stylesheet" href="/assets/css/menubar.css">
 </head>
 <nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0">
@@ -135,38 +131,48 @@ if (!isset($_SESSION['email'])) {
         $stmt->execute();
         $result = $stmt->get_result();
 
-        while ($row = $result->fetch_assoc()):
+        $sql = $conn->prepare("SELECT * FROM `inventory` where id");
+        $sql->execute();
+        $result1 = $sql->get_result();
+        $row1 = $result1 ->fetch_assoc();
+
+        while (($row = $result->fetch_assoc()) && ($row1 = $result1->fetch_assoc())):
         $grand_total = $grand_total+($row['qty']*$row['price']);
 
     ?>
+
   <div class="card product_data mb-2">
     <div class="img-container">
-          <img src="/assets/img/product 1.png" alt="">
+          <img src="<?=$row['image_path']?>" alt="">
     </div>
     <div class="card-body">
       <h5 class="card-title"><?= $row['product'] ?></h5>
+      <small><?= $row['supplier'] ?></small>
       <p class="card-text"><i class="fa-solid fa-peso-sign"></i>&nbsp;&nbsp;<?= number_format($row['price'],2); ?></p>
 
+      <!-- Mark me as debugging -->
+      <input type="hidden" class="prod_id" name="prod_id" value="<?php  echo $row1['id'];?>">
+        <input type="hidden" class="prodQty" name="prodQty" value="<?php echo $row1['quantity'];?>">
     
   <div class="qty-container">
-    <form id="frm<?php echo $row['id'] ?>">
+    <form>
       <input type="hidden" class="cart_id" name="cart_id" value="<?php  echo $row['id'];?>">
-
+     
       <!-- Quantity Container -->
       <div class="qty-container">
         <div class="btn btn-outline-dark value-button decrementBtn updateQty" id="decrease"  value="Decrease Value"><i class="fa-sharp fa-solid fa-minus"></i></div>
-     
+
+  
         <input type="number" class="form-control itemQty" name="qty" id="itemQty" value="<?php echo $row['qty']; ?>">
 
         <div class="btn btn-dark value-button incrementBtn updateQty" id="increase" value="Increase Value"><i class="fa-sharp fa-solid fa-plus"></i></div>
       </div>
 
-        
   </form>
   </div>
 
       <div class="card-foot">
-        <h5 class="card-title total"><b>Total:&nbsp;&nbsp;</b><?= number_format($row['price']*$row['qty']); ?></h5>
+        <h5 class="card-title total"><b>Total:</b> <i class="fa-solid fa-peso-sign"></i><?= number_format($row['price']*$row['qty']); ?></h5>
         <a href="./config/action.php?remove=<?= $row['id'] ?>" class="text-danger btnRemove" onclick="deletedata(<?php echo $row['id'];?>)"><i class="bi bi-trash3-fill text-danger removeBtn"></i></a>
       </div>
     </div>
@@ -227,7 +233,7 @@ if (!isset($_SESSION['email'])) {
           </div>
           <div class="form-group">
           <label class="form-label">Phone Number:</label>
-            <input type="tel" name="phone" class="form-control" placeholder="Enter Phone" required>
+            <input type="tel" name="phone" class="form-control" placeholder="Enter Phone" required value='<?php echo $fetch_info['phone']?>'>
           </div>
           <div class="form-group">
           <label class="form-label">Address:</label>
@@ -255,17 +261,8 @@ if (!isset($_SESSION['email'])) {
   </div>
 </div>
 
-<script src="/assets/js/sweetalert2.all.min.js"></script>
-<link rel="stylesheet" href="/assets/css/sweetalert2.min.css">
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>
-<!-- <script src="https://code.jquery.com/jquery-3.6.1.slim.js" integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script> -->
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<?php include 'links/footer.php' ?>
 <script src="/assets/js/addcart.js"></script>
-
 
 </body>
 </html>

@@ -22,16 +22,20 @@ if(mysqli_num_rows($result) > 0)
 	{
 		$output .= '
     <div class="mb-5 card-container">
-    <img src="/assets/img/product 1.png" class="card-img-top">
+    <img src='.$row["image_path"].' class="card-img-top">
     <div class="card-body">
       <h5 class="card-title mt-3"><b><i class="fa-solid fa-peso-sign"></i>&nbsp;'.$row["price"].'</b></h5>
       <p class="card-text m-0">'.$row["product"].'</p>
+      <small>'.$row["supplier"].'</small>
+      
       <form action="" class="form-submit">
-      <input type="hidden" class="form-control quantity" value="50">
+      <input type="hidden" class="form-control quantity" value="1">
       <input type="hidden" class="id" value="'.$row["id"].'">
       <input type="hidden" class="product" value=" '.$row["product"].'">
       <input type="hidden" class="price" value=" '.$row["price"].' ">
+      <input type="hidden" class="supplier" value=" '.$row["supplier"].' ">
       <input type="hidden" class="image_file" value=" '.$row["image_file"].' ">
+      <input type="hidden" class="image_path" value=" '.$row["image_path"].' ">
       <input type="hidden" class="serialnumber" value="  '.$row["serialnumber"].'  ">
       <a href="#" class="btn btn-lg d-md-block mt-3 addItemBtn">Add to cart</a> 
     </form>

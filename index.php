@@ -6,17 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>R.J. Avanceña</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
-  <link rel="stylesheet" href="/assets/css/index.css">
-  <link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css"
-  rel="stylesheet"
-/>
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/menubar.css">
+  <?php include 'pages/customer/links/header.php' ?>
 </head>
 <nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0">
   <div class="container-fluid">
@@ -247,17 +237,6 @@
     </div>
   </footer>
   </section>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"
-></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<link rel="stylesheet" href="/assets/css/sweetalert2.min.css">
-<script src="/assets/js/sweetalert2.all.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="/assets/js/search.js"></script>
-<script>
-AOS.init();
-</script>
-<script src="/assets/js/indexsearch.js"></script>
+  <?php include 'pages/customer/links/footer.php' ?>
 </body>
 </html>
