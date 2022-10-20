@@ -135,8 +135,15 @@ div.modal-dialog{
       }
       form{
         padding-top: 3em;
-
-    
+          button.orderBtn{
+            display: block;
+            width: 100%;
+            padding:  1em;
+            background: #0D6EFD;
+            font-weight: bold;
+            text-transform: capitalize;
+            font-size: 16px;
+        }
       }
     }
   }

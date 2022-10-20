@@ -113,6 +113,15 @@ div.modal-dialog div.modal-content div.modal-body div#order h5 {
 div.modal-dialog div.modal-content div.modal-body form {
   padding-top: 3em;
 }
+div.modal-dialog div.modal-content div.modal-body form button.orderBtn {
+  display: block;
+  width: 100%;
+  padding: 1em;
+  background: #0D6EFD;
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 16px;
+}
 
 @media screen and (min-width: 768px) {
   div.cartList-container div.card {

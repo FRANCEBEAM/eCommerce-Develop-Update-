@@ -260,6 +260,8 @@ if (!isset($_SESSION['email'])) {
   </section>
 
   <?php include 'links/footer.php' ?>
+  <link rel="stylesheet" href="/assets/css/sweetalert2.min.css">
+<script src="/assets/js/sweetalert2.all.min.js"></script>
 <script src="/assets/js/addcart.js"></script>
 <script src="/assets/js/search.js"></script>
 

@@ -180,7 +180,7 @@ if (!isset($_SESSION['email'])) {
   <?php endwhile; ?>
   <div class="total-container">
     <h5 class="sub-total"><b>Subtotal:&nbsp;&nbsp;</b><i class="fa-solid fa-peso-sign"></i><?= number_format($grand_total,2); ?></h5>
-    <a href="./checkout.php" class="btn btn-success mt-4 mb-5 <?= ($grand_total > 1) ? '' : 'disabled'; ?>" data-bs-toggle="modal" data-bs-target="#modalOrder"><b>CHECKOUT</b>&nbsp;&nbsp;<svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <a class="btn btn-success mt-4 mb-5 <?= ($grand_total > 1) ? '' : 'disabled'; ?>" data-bs-toggle="modal" data-bs-target="#modalOrder"><b>CHECKOUT</b>&nbsp;&nbsp;<svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M12.8377 8.01561H1.63281C1.38689 8.01561 1.1875 8.215 1.1875 8.46092V10.539C1.1875 10.785 1.38689 10.9844 1.63281 10.9844H12.8377V12.6936C12.8377 13.4871 13.797 13.8844 14.3581 13.3234L17.5517 10.1298C17.8995 9.78194 17.8995 9.21803 17.5517 8.87024L14.3581 5.67664C13.797 5.11558 12.8377 5.51295 12.8377 6.30642V8.01561V8.01561Z" fill="white"/>
       </svg>
     </a>
@@ -248,8 +248,7 @@ if (!isset($_SESSION['email'])) {
             </select>
           </div>
           <div class="modal-footer">
-          <!-- <button type="submit" class="btn btn-primary btn-lg btn-block btnSignin" name="signin">Sign in</button> -->
-          <button type="submit" name="submit" class="btn btn-primary btn-lg mb-3 btn-block">Confirm order</button>
+          <button type="submit" name="submit" class="btn btn-primary btn-lg mb-3 btn-block orderBtn">Confirm order</button>
         <button type="button" class="btn btn-secondary btn-lg  btn-block" data-bs-dismiss="modal">Close</button>
       </div>
         </form>

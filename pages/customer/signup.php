@@ -320,6 +320,9 @@ if (isset($_POST["signup"])){
 
 <?php include 'links/footer.php' ?>
 
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script> -->
+<script src="/assets/js/datepicker.min.js"></script>
+
 <script>
         $(function() {
             $('#datepicker').datepicker();

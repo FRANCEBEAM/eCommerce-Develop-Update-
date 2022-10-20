@@ -86,11 +86,12 @@ section.product-container div.item-container {
   display: grid;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1em;
+  gap: 4em;
   grid-template-columns: 1fr 1fr;
 }
 section.product-container div.item-container div.card-container {
-  padding: 0.7em;
+  cursor: pointer;
+  padding: 0;
   background: none;
   margin: 0;
 }

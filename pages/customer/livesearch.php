@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="/assets/css/livesearch.css">
 <?php
 require 'config/connection.php';
 $output = '';
@@ -21,7 +21,8 @@ if(mysqli_num_rows($result) > 0)
 	while($row = mysqli_fetch_array($result))
 	{
 		$output .= '
-    <div class="mb-5 card-container">
+    <div class="mb-5 card-container" data-mdb-toggle="modal" data-mdb-target="#exampleModal'.$row["id"].'" style="cursor:pointer;">
+
     <img src='.$row["image_path"].' class="card-img-top">
     <div class="card-body">
       <h5 class="card-title mt-3"><b><i class="fa-solid fa-peso-sign"></i>&nbsp;'.$row["price"].'</b></h5>
@@ -37,10 +38,46 @@ if(mysqli_num_rows($result) > 0)
       <input type="hidden" class="image_file" value=" '.$row["image_file"].' ">
       <input type="hidden" class="image_path" value=" '.$row["image_path"].' ">
       <input type="hidden" class="serialnumber" value="  '.$row["serialnumber"].'  ">
-      <a href="#" class="btn btn-lg d-md-block mt-3 addItemBtn">Add to cart</a> 
+    
     </form>
     </div>
     </div>
+
+
+<div class="modal fade" id="exampleModal'.$row["id"].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content w-100">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Product Detail</h5>
+        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="left-content">
+        <img src='.$row["image_path"].' class="card-img-top">
+        </div>
+
+        <div class="right-content">
+        <h1 class="card-text m-0 fw-bold">'.$row["product"].'</h1>
+        <small>'.$row["supplier"].'</small>
+        <h5 class="card-title mt-3"><b><i class="fa-solid fa-peso-sign"></i>&nbsp;'.$row["price"].'</b></h5>
+        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eleifend auctor sed sit. Quam nullam sem pulvinar congue eu dignissim vulputate. Condimentum magna diam platea ipsum feugiat amet integer. Fusce eleifend auctor sed sit. Quam nullam sem pulvinar congue eu dignissim vulputate.</p>
+        <form action="" class="form-submit">
+        <input type="hidden" class="form-control quantity" value="1">
+        <input type="hidden" class="id" value="'.$row["id"].'">
+        <input type="hidden" class="product" value=" '.$row["product"].'">
+        <input type="hidden" class="price" value=" '.$row["price"].' ">
+        <input type="hidden" class="supplier" value=" '.$row["supplier"].' ">
+        <input type="hidden" class="image_file" value=" '.$row["image_file"].' ">
+        <input type="hidden" class="image_path" value=" '.$row["image_path"].' ">
+        <input type="hidden" class="serialnumber" value="  '.$row["serialnumber"].'  ">
+
+        <a href="#" class="btn d-md-block addItemBtn text-center" style="background:#0D6EFD"><i class="fa-solid fa-cart-shopping"></i> &nbsp;Add to cart</a> 
+      </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 		';
 	}
 	echo $output;
