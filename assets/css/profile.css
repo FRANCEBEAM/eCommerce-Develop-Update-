@@ -38,6 +38,59 @@ div.main-container div.information-container {
   align-items: center;
   text-align: center;
 }
+div.main-container div.information-container .upload {
+  width: 140px;
+  position: relative;
+  margin: auto;
+  text-align: center;
+}
+div.main-container div.information-container .upload img {
+  border-radius: 50%;
+  border: 8px solid #DCDCDC;
+  width: 125px;
+  height: 125px;
+}
+div.main-container div.information-container .upload .rightRound {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #00B4FF;
+  width: 32px;
+  height: 32px;
+  line-height: 33px;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+div.main-container div.information-container .upload .leftRound {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: red;
+  width: 32px;
+  height: 32px;
+  line-height: 33px;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+div.main-container div.information-container .upload .fa {
+  color: white;
+}
+div.main-container div.information-container .upload input {
+  position: absolute;
+  transform: scale(2);
+  opacity: 0;
+}
+div.main-container div.information-container .upload input::-webkit-file-upload-button, div.main-container div.information-container .upload input[type=submit] {
+  cursor: pointer;
+}
+div.main-container div.information-container img {
+  width: 100px;
+  border-radius: 50%;
+}
 div.main-container div.information-container h1 {
   color: #212529;
   font-weight: 600;

@@ -1,6 +1,7 @@
 <?php
 require 'config/connection.php';
 session_start();
+
 if (!isset($_SESSION['email'])) {
     header("Location: signin.php");
 }
@@ -8,22 +9,46 @@ if (!isset($_SESSION['email'])) {
 //IF USERS WANTS TO UPDATE PROFILE
 $success = "";
 if (isset($_POST["btnSave"])) {
+  $email = $_SESSION['email'];
 $phone = mysqli_real_escape_string($conn, $_POST["phone"]);
 $address = mysqli_real_escape_string($conn, $_POST["address"]);
 $birthdate = mysqli_real_escape_string($conn, $_POST["birthdate"]);
 $gender = mysqli_real_escape_string($conn, $_POST["gender"]);
 
 
-$sql = "UPDATE users SET phone='$phone', address='$address', birthdate='$birthdate', gender= '$gender' WHERE email='{$_SESSION["email"]}'";
-$result = mysqli_query($conn, $sql);
-if ($result) {
-    $success = 'Profile updated successfully';
+
+    $sql = "UPDATE users SET phone='$phone', address='$address', birthdate='$birthdate', gender= '$gender' WHERE email='{$_SESSION["email"]}'";
+
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        $success = 'Profile updated successfully';
+      
+
+    } else {
+        echo "<script>alert('Profile can not Updated.');</script>";
+        echo  $conn->error;
+    }
 
 
-} else {
-    echo "<script>alert('Profile can not Updated.');</script>";
-    echo  $conn->error;
-}
+// $update_image = $_FILES['update_image']['name'];
+// $update_image_size = $_FILES['update_image']['size'];
+// $update_image_tmp_name = $_FILES['update_image']['tmp_name'];
+// $update_image_folder = "upload/";
+
+// if ($update_image_size > 5242880) {
+//   echo "<script>alert('Photo is very big. Maximum photo uploading size is 5MB.');</script>";
+// } else {
+//   $sql = "UPDATE users SET phone='$phone', address='$address', birthdate='$birthdate', gender= '$gender', image = '$update_image' WHERE email='{$_SESSION["email"]}'";
+//   $result = mysqli_query($conn, $sql);
+//   if ($result) {
+//       echo "<script>alert('Profile Updated successfully.');</script>";
+//       move_uploaded_file($update_image_tmp_name, $update_image_folder);
+//   } else {
+//       echo "<script>alert('Profile can not Updated.');</script>";
+//       echo  $conn->error;
+//   }
+// }
+
 }
 
 $email = $_SESSION['email'];
@@ -113,7 +138,7 @@ $fetch_info = mysqli_fetch_assoc($run_Sql);
       aria-expanded="false"
     >
       <img
-        src="/assets/img/profile.jpg"
+        src="upload/<?php echo $fetch_info['image']; ?>"
         class="rounded-circle"
         height="25"
         alt="Black and White Portrait of a Man"
@@ -151,7 +176,50 @@ $fetch_info = mysqli_fetch_assoc($run_Sql);
       </div>
   
       <div class="information-container">
-        <h1><?php echo $fetch_info['firstname']; ?> <?php echo $fetch_info['lastname']; ?></h1>
+
+      <?php
+
+    $email = $_SESSION['email'];
+    if(isset($_FILES["fileImg"]["name"])){
+     
+
+      $src = $_FILES["fileImg"]["tmp_name"];
+      $imageName = uniqid() . $_FILES["fileImg"]["name"];
+
+      $target = "upload/";
+
+      move_uploaded_file($src, $target);
+
+      $query = "UPDATE users SET image = '$imageName' WHERE email='{$_SESSION["email"]}'";
+      mysqli_query($conn, $query);
+
+    }
+    ?>
+
+      <form class="form" id = "form" action="" enctype="multipart/form-data" method="post">
+      <input type="hidden" name="id" value="<?php echo $fetch_info['id']; ?>">
+      <div class="upload">
+        <img src="upload/<?php echo $fetch_info['image']; ?>" id = "image">
+
+        <div class="rightRound" id = "upload">
+          <input type="file" name="fileImg" id = "fileImg" accept=".jpg, .jpeg, .png">
+          <i class = "fa fa-camera"></i>
+        </div>
+
+        <div class="leftRound" id = "cancel" style = "display: none;">
+          <i class = "fa fa-times"></i>
+        </div>
+        <div class="rightRound" id = "confirm" style = "display: none;">
+          <input type="submit" name="btnProf">
+          <i class = "fa fa-check"></i>
+        </div>
+      </div>
+    </form>
+
+
+
+
+        <h1 class="mt-3"><?php echo $fetch_info['firstname']; ?> <?php echo $fetch_info['lastname']; ?></h1>
         <p><?php echo $_SESSION['email']; ?></p>
         <?php 
             if($success){
@@ -169,7 +237,7 @@ $fetch_info = mysqli_fetch_assoc($run_Sql);
       </div>
   
         <div class="form-container">
-          <form action= "./profile.php" method="POST" >
+          <form action= "./profile.php" method="POST">
           <div class="card">
             <div class="card-body">
               <div class="card-head">
@@ -221,8 +289,20 @@ $fetch_info = mysqli_fetch_assoc($run_Sql);
               </div>
             </div>
           </div>
-      
-          <button type="submit" class="btn btn-primary btn-lg mt-5" name="btnSave" id="btnSave">Save changes</button>
+
+          <!-- <div class="card">
+            <div class="card-body">
+              <div class="card-head">
+              <h1 class="mb-4">Profile Picture:</h1>
+              </div>
+              <p class="card-text">Upload Profile Picture</p>
+              <div class="input-group mb-3">
+              <input type="file" name="update_image" accept="image/jpg, image/jpeg, image/png" class="box">
+              </div>
+            </div>
+          </div> -->
+            <!-- <br> -->
+    <button type="submit" class="btn btn-primary btn-lg" name="btnSave" id="btnSave">Save changes</button>
       </form>
     </div>
   </div>
@@ -234,5 +314,25 @@ $fetch_info = mysqli_fetch_assoc($run_Sql);
 </script>
 
 <script src="/assets/js/addcart.js"></script>
+<script type="text/javascript">
+      document.getElementById("fileImg").onchange = function(){
+        document.getElementById("image").src = URL.createObjectURL(fileImg.files[0]); // Preview new image
+
+        document.getElementById("cancel").style.display = "block";
+        document.getElementById("confirm").style.display = "block";
+
+        document.getElementById("upload").style.display = "none";
+      }
+
+      var userImage = document.getElementById('image').src;
+      document.getElementById("cancel").onclick = function(){
+        document.getElementById("image").src = userImage; // Back to previous image
+
+        document.getElementById("cancel").style.display = "none";
+        document.getElementById("confirm").style.display = "none";
+
+        document.getElementById("upload").style.display = "block";
+      }
+    </script>
 </body>
 </html>

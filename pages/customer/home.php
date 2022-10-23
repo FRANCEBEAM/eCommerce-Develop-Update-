@@ -85,8 +85,8 @@ if (!isset($_SESSION['email'])) {
       data-mdb-toggle="dropdown"
       aria-expanded="false"
     >
-      <img
-        src="/assets/img/profile.jpg"
+    <img
+        src="upload/<?php echo $fetch_info['image']; ?>"
         class="rounded-circle"
         height="25"
         alt="Black and White Portrait of a Man"
