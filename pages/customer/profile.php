@@ -95,7 +95,7 @@ $fetch_info = mysqli_fetch_assoc($run_Sql);
 <div class="d-flex align-items-center">
   <!-- Icon -->
   <a class="text-reset me-3" href="./cart.php">
-    <i class="fas fa-shopping-cart"></i>
+    <i class="fas fa-shopping-cart fa-lg"></i>
     <span class="badge rounded-pill badge-notification bg-danger" id="cart-item"></span>
   </a>
 
@@ -109,7 +109,7 @@ $fetch_info = mysqli_fetch_assoc($run_Sql);
       data-mdb-toggle="dropdown"
       aria-expanded="false"
     >
-      <i class="fas fa-bell"></i>
+      <i class="fas fa-bell fa-lg"></i>
       <span class="badge rounded-pill badge-notification bg-danger">1</span>
     </a>
     <ul
@@ -137,13 +137,21 @@ $fetch_info = mysqli_fetch_assoc($run_Sql);
       data-mdb-toggle="dropdown"
       aria-expanded="false"
     >
-      <img
-        src="upload/<?php echo $fetch_info['image']; ?>"
-        class="rounded-circle"
-        height="25"
-        alt="Black and White Portrait of a Man"
-        loading="lazy"
-      />
+    <?php
+
+         $email = $_SESSION['email'];
+         $select = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email'") or die('query failed');
+         if(mysqli_num_rows($select) > 0){
+            $fetch = mysqli_fetch_assoc($select);
+         }
+         if($fetch['image'] == ''){
+            echo '<img src="upload/default.png" class="rounded-circle"
+            height="25">';
+         }else{
+            echo '<img src="upload/'.$fetch['image'].'" class="rounded-circle"
+            height="25">';
+         }
+      ?>
     </a>
     <ul
       class="dropdown-menu dropdown-menu-end"
@@ -179,19 +187,18 @@ $fetch_info = mysqli_fetch_assoc($run_Sql);
 
       <?php
 
-    $email = $_SESSION['email'];
-    if(isset($_FILES["fileImg"]["name"])){
-     
+      $email = $_SESSION['email'];
+      if(isset($_FILES["fileImg"]["name"])){
 
-      $src = $_FILES["fileImg"]["tmp_name"];
-      $imageName = uniqid() . $_FILES["fileImg"]["name"];
 
-      $target = "upload/";
+      $file_tmp = $_FILES['fileImg']['tmp_name'];
+      $file_name = $_FILES['fileImg']['name'];
+      $file_destination = 'upload/' . $file_name;
+      move_uploaded_file($file_tmp, $file_destination);
 
-      move_uploaded_file($src, $target);
-
-      $query = "UPDATE users SET image = '$imageName' WHERE email='{$_SESSION["email"]}'";
+      $query = "UPDATE users SET image = '$file_name' WHERE email='{$_SESSION["email"]}'";
       mysqli_query($conn, $query);
+      echo " <script>window.location.href='profile.php'</script>";
 
     }
     ?>
@@ -199,7 +206,24 @@ $fetch_info = mysqli_fetch_assoc($run_Sql);
       <form class="form" id = "form" action="" enctype="multipart/form-data" method="post">
       <input type="hidden" name="id" value="<?php echo $fetch_info['id']; ?>">
       <div class="upload">
-        <img src="upload/<?php echo $fetch_info['image']; ?>" id = "image">
+       
+        
+        <?php
+         $email = $_SESSION['email'];
+         $select = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email'") or die('query failed');
+         if(mysqli_num_rows($select) > 0){
+            $fetch = mysqli_fetch_assoc($select);
+         }
+         if($fetch['image'] == ''){
+            echo '<img src="upload/default.png" id = "image">';
+         }else{
+            echo '
+
+            <img src=upload/'.$fetch_info["image"].' id = "image">
+            
+            ';
+         }
+      ?>
 
         <div class="rightRound" id = "upload">
           <input type="file" name="fileImg" id = "fileImg" accept=".jpg, .jpeg, .png">
@@ -277,7 +301,7 @@ $fetch_info = mysqli_fetch_assoc($run_Sql);
           <div class="card">
             <div class="card-body">
               <div class="card-head">
-                <h1 class="mb-4">Gender: <i class="fa-sharp fa-solid fa-person"></i></i></h1>
+                <h1 class="mb-4">Sex: <i class="fa-sharp fa-solid fa-person"></i></i></h1>
               </div>
               <p class="card-text">Setup your identity.</p>
 

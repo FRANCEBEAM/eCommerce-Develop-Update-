@@ -28,12 +28,6 @@ if (isset($_POST["signup"])){
     $birthdate = $_POST["birthdate"];
     $gender = $_POST["gender"];
 
-    $image = $_FILES['image']['name'];
-    $image_size = $_FILES['image']['size'];
-    $image_tmp_name = $_FILES['image']['tmp_name'];
-    $image_folder = 'uploaded_img/'.$image;
-
-
     $check_email = mysqli_num_rows(mysqli_query($conn, "SELECT email FROM users WHERE email='$email'"));
     $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
     $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
@@ -45,9 +39,7 @@ if (isset($_POST["signup"])){
      }else{
 
 
-        $sql = "INSERT INTO users(firstname, lastname, username, email, phone, address, birthdate, gender , password, image, verification_code, email_verified_at) VALUES ('" . $firstname . "', '" . $lastname . "', '" . $username . "', '" . $email . "','" . $phone . "', '" . $address . "', '" . $birthdate . "', '" . $gender . "', '" . $encrypted_password . "','" . $image . "',  '" . $verification_code . "', NULL)";
-
-        move_uploaded_file($image_tmp_name, $image_folder);
+        $sql = "INSERT INTO users(firstname, lastname, username, email, phone, address, birthdate, gender , password, verification_code, email_verified_at) VALUES ('" . $firstname . "', '" . $lastname . "', '" . $username . "', '" . $email . "','" . $phone . "', '" . $address . "', '" . $birthdate . "', '" . $gender . "', '" . $encrypted_password . "', '" . $verification_code . "', NULL)";
 
         $result = mysqli_query($conn, $sql);
 
@@ -221,6 +213,7 @@ if (isset($_POST["signup"])){
     ?>
       <form id="form" class="form" method="POST">
         <!-- 2 column grid layout with text inputs for the first and last names -->
+        
         <div class="row">
           <div class="col">
             <div class="form-outline mb-3">
@@ -315,10 +308,10 @@ if (isset($_POST["signup"])){
       </div>
 
          <!-- Profile image -->
-      <div class="col mb-4">
+      <!-- <div class="col mb-4">
       <label for="formFileDisabled" class="form-label">Upload Profile Picture</label>
       <input type="file" name="image" class="box" accept="image/jpg, image/jpeg, image/png">
-      </div>
+      </div> -->
 
         <!-- Checkbox -->
         <div class="form-check d-flex justify-content-center mb-4 mt-5">

@@ -90,13 +90,20 @@ if (!isset($_SESSION['email'])) {
       data-mdb-toggle="dropdown"
       aria-expanded="false"
     >
-    <img
-        src="upload/<?php echo $fetch_info['image']; ?>"
-        class="rounded-circle"
-        height="25"
-        alt="Black and White Portrait of a Man"
-        loading="lazy"
-      />
+    <?php
+         $email = $_SESSION['email'];
+         $select = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email'") or die('query failed');
+         if(mysqli_num_rows($select) > 0){
+            $fetch = mysqli_fetch_assoc($select);
+         }
+         if($fetch['image'] == ''){
+            echo '<img src="upload/default.png" class="rounded-circle"
+            height="25">';
+         }else{
+            echo '<img src="upload/'.$fetch['image'].'" class="rounded-circle"
+            height="25">';
+         }
+      ?>
     </a>
     <ul
       class="dropdown-menu dropdown-menu-end"

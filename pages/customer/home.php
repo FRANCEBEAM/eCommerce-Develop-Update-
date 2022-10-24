@@ -1,8 +1,14 @@
 <?php
+require 'config/connection.php';
 session_start();
 if (!isset($_SESSION['email'])) {
     header("Location: signin.php");
 }
+
+$email = $_SESSION['email'];
+$sql = "SELECT * FROM users WHERE email = '$email'";
+$run_Sql = mysqli_query($conn, $sql);
+$fetch_info = mysqli_fetch_assoc($run_Sql);
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +49,7 @@ if (!isset($_SESSION['email'])) {
 <div class="d-flex align-items-center">
   <!-- Icon -->
   <a class="text-reset me-3" href="./cart.php">
-    <i class="fas fa-shopping-cart"></i>
+    <i class="fas fa-shopping-cart fa-lg"></i>
     <span class="badge rounded-pill badge-notification bg-danger" id="cart-item"></span>
   </a>
 
@@ -57,7 +63,7 @@ if (!isset($_SESSION['email'])) {
       data-mdb-toggle="dropdown"
       aria-expanded="false"
     >
-      <i class="fas fa-bell"></i>
+      <i class="fas fa-bell fa-lg"></i>
       <span class="badge rounded-pill badge-notification bg-danger">1</span>
     </a>
     <ul
@@ -85,13 +91,22 @@ if (!isset($_SESSION['email'])) {
       data-mdb-toggle="dropdown"
       aria-expanded="false"
     >
-    <img
-        src="upload/<?php echo $fetch_info['image']; ?>"
-        class="rounded-circle"
-        height="25"
-        alt="Black and White Portrait of a Man"
-        loading="lazy"
-      />
+    <?php
+        
+
+         $email = $_SESSION['email'];
+         $select = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email'") or die('query failed');
+         if(mysqli_num_rows($select) > 0){
+            $fetch = mysqli_fetch_assoc($select);
+         }
+         if($fetch['image'] == ''){
+            echo '<img src="upload/default.png" class="rounded-circle"
+            height="25">';
+         }else{
+            echo '<img src="upload/'.$fetch['image'].'" class="rounded-circle"
+            height="25">';
+         }
+      ?>
     </a>
     <ul
       class="dropdown-menu dropdown-menu-end"
