@@ -60,7 +60,7 @@ if(mysqli_num_rows($result) > 0)
         <h1 class="card-text m-0 fw-bold">'.$row["product"].'</h1>
         <small>'.$row["supplier"].'</small>
         <h5 class="card-title mt-3"><b><i class="fa-solid fa-peso-sign"></i>&nbsp;'.$row["price"].'</b></h5>
-        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eleifend auctor sed sit. Quam nullam sem pulvinar congue eu dignissim vulputate. Condimentum magna diam platea ipsum feugiat amet integer. Fusce eleifend auctor sed sit. Quam nullam sem pulvinar congue eu dignissim vulputate.</p>
+        <p class="description">'.$row["descriptions"].'</p>
         <form action="" class="form-submit">
         <input type="hidden" class="form-control quantity" value="1">
         <input type="hidden" class="id" value="'.$row["id"].'">

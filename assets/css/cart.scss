@@ -63,6 +63,7 @@ div.cartList-container{
         padding: 0;
         text-align: left;
         h5{
+          color: #1D1E23;
           padding-top: .8em;
           font-weight: 600;
           font-size: 18px;
@@ -99,8 +100,9 @@ div.cartList-container{
         display: flex;
         justify-content: space-between;
         align-items: center;
-        h5.total{
-          font-size: 16px;
+        p.total{
+          font-size: 18px;
+          color: #1D1E23;
         }
         i.removeBtn{
           padding: 0 .4em;
@@ -247,11 +249,11 @@ div.cartList-container{
 @media screen and(min-width: 1200px){
   //Navigation
   nav{
-    padding: 0 7em;
+    padding: 0 16em;
   }
 
   div.cartList-container{
-    padding: 0 6em;
+    padding: 0 16em;
     div.card{
       div.img-container{
         width: 14%;
@@ -347,7 +349,7 @@ div.cartList-container{
   
   @media screen and (min-width: 1390px){
       div.cartList-container{
-        padding: 0 13em;  
+        // padding: 0 13em;  
 
         div.card{
             padding: 0 1em;

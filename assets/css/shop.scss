@@ -344,11 +344,11 @@ section.about-container{
 
 @media screen and(min-width: 1200px){
   nav{
-    padding: 0 7em;
+    padding: 0 16em;
   }
   div.main-container{
     section.hero-container{
-      padding: 4em 8em;
+      padding: 4em 16em;
       grid-template-columns: 1fr 1fr;
         div.left-content{
           h1{
@@ -369,7 +369,7 @@ section.about-container{
 
     }
     section.store-container{
-      padding: 4em 8em;
+      padding: 4em 16em;
       div.store{
         gap: 4em;
       }
@@ -383,7 +383,7 @@ section.about-container{
       }
     }
     section.product-container{
-      padding: 4em 8em;
+      padding: 4em 16em;
       div.search-container{
         input{
           padding: .4em;

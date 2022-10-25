@@ -80,6 +80,9 @@ div.main-container{
 }
 
 @media screen and(min-width: 768px){
+      body{
+      overflow: hidden;
+    }
   div.main-container{
     div.right-content{
       padding: 2em 8em;
@@ -91,11 +94,13 @@ div.main-container{
     // body{
     //   overflow: hidden;
     // }
+    
     nav{
       padding: 0 3em;
     }
     div.main-container{
       div.form-container{
+        
         padding: .4em 4em;
         display: grid;
         grid-template-columns: 1fr 1.4fr;
@@ -161,7 +166,7 @@ div.main-container{
 
 @media screen and(min-width: 1200px){
   nav{
-    padding: 0 7em;
+    padding: 0 16em;
   }
   div.main-container{
     div.form-container{
@@ -192,9 +197,6 @@ div.main-container{
 }
 
 @media screen and (min-width: 1380px){
-  // body{
-  //   overflow: hidden;
-  // }
   div.main-container{
     padding: 2em 12em;
     div.form-container{

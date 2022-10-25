@@ -21,8 +21,13 @@ div.main-container section.hero-container {
 div.main-container section.hero-container div.left-content {
   text-align: center;
 }
+div.main-container section.hero-container div.left-content small {
+  color: #6d6d6d;
+  font-size: 16px;
+  font-weight: 700;
+}
 div.main-container section.hero-container div.left-content h1 {
-  font-size: 32px;
+  font-size: 38px;
   color: #1D1E23;
   font-weight: 700;
 }
@@ -37,6 +42,12 @@ div.main-container section.hero-container div.left-content a.btnShop {
   color: white;
   font-weight: bold;
   border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+div.main-container section.hero-container div.left-content a.btnShop:hover {
+  box-shadow: 2px 2px #53a7ea, 4px 4px #53a7ea, 6px 6px #53a7ea;
+  transform: translateX(17px);
 }
 div.main-container section.hero-container div.right-content {
   display: none;
@@ -169,37 +180,38 @@ section.about-container {
     padding: 0 3em;
   }
   div.main-container {
-    padding: 4em 0;
+    padding: 1em 0;
   }
   div.main-container section.hero-container {
+    background-image: url(/assets/img/hero-bg.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     box-shadow: none;
     padding: 4em 4em;
     display: grid;
-    grid-template-columns: 1fr 1.3fr;
+    grid-template-columns: 1fr 1fr;
   }
   div.main-container section.hero-container div.left-content {
     padding-top: 3em;
     text-align: left;
     margin: 0;
   }
+  div.main-container section.hero-container div.left-content small {
+    font-size: 16px;
+    color: #b7b7b7;
+    font-weight: 600;
+  }
   div.main-container section.hero-container div.left-content h1 {
-    font-size: 28px;
+    font-size: 38px;
     margin-bottom: 1em;
+    color: #fff;
   }
   div.main-container section.hero-container div.left-content p {
-    font-size: 16px;
+    color: #fff;
+    font-size: 14px;
     padding: 0;
     margin-bottom: 1.8em;
-  }
-  div.main-container section.hero-container div.right-content {
-    display: block;
-  }
-  div.main-container section.hero-container div.right-content img {
-    display: flex;
-    justify-content: flex-end;
-    width: 500px;
-    right: 0;
-    float: inline-end;
   }
   div.main-container section.store-container {
     padding: 4em 4em;
@@ -215,7 +227,7 @@ section.about-container {
   div.main-container section.store-container div.info-content div.body-info {
     justify-content: space-between;
     margin: 0;
-    width: 300px;
+    width: 267px;
   }
   div.main-container section.store-container div.info-content div.body-info h5 {
     font-size: 16px;
@@ -223,7 +235,7 @@ section.about-container {
   }
   div.main-container section.store-container div.info-content div.body-info p {
     padding-top: 0.8em;
-    font-size: 12px;
+    font-size: 11px;
   }
   div.main-container section.product-container {
     padding: 0 4em;
@@ -250,13 +262,32 @@ section.about-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
+  div.main-container section.product-container div.item-container div.card-container a.addItemBtn {
+    color: #fff;
+    background-color: #6F42C1;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 0 4px #999;
+    background-position: center;
+    transition: background 0.6s;
+  }
+  div.main-container section.product-container div.item-container div.card-container a.addItemBtn:hover {
+    background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%) center/15000%;
+    color: white;
+  }
+  div.main-container section.product-container div.item-container div.card-container a.addItemBtn:active {
+    background-color: #292d3e;
+    background-size: 100%;
+    transition: background 0s;
+  }
 }
 @media screen and (min-width: 1063px) {
   div.main-container section.hero-container {
-    padding: 4em 4em;
+    padding: 6em 4em;
   }
   div.main-container section.hero-container div.left-content h1 {
-    font-size: 34px;
+    font-size: 42px;
   }
   div.main-container section.hero-container div.left-content p {
     font-size: 14px;
@@ -264,9 +295,10 @@ section.about-container {
 }
 @media screen and (min-width: 1144px) {
   div.main-container section.hero-container {
-    padding: 4em 4em;
+    padding: 8em 4em;
   }
   div.main-container section.hero-container div.left-content h1 {
+    font-size: 46px;
     align-items: center;
     justify-items: center;
   }
@@ -276,25 +308,33 @@ section.about-container {
 }
 @media screen and (min-width: 1200px) {
   nav {
-    padding: 0 7em;
+    padding: 0 16em;
   }
   div.main-container section.hero-container {
-    padding: 4em 8em;
-    grid-template-columns: 1fr 1fr;
+    padding: 0 16em;
+    grid-template-columns: 2fr 1fr;
+    padding: 12em 16em;
+  }
+  div.main-container section.hero-container div.left-content small {
+    font-size: 20px;
   }
   div.main-container section.hero-container div.left-content h1 {
-    padding-top: 1em;
-    font-size: 38px;
+    font-size: 54px;
+    margin: 0;
   }
   div.main-container section.hero-container div.left-content p {
+    padding-top: 1.4em;
     font-size: 16px;
     width: 450px;
+  }
+  div.main-container section.hero-container div.left-content a.btnShop {
+    padding: 1.3em;
   }
   div.main-container section.hero-container div.right-content img {
     width: 600px;
   }
   div.main-container section.store-container {
-    padding: 4em 8em;
+    padding: 4em 16em;
   }
   div.main-container section.store-container div.store {
     gap: 4em;
@@ -304,7 +344,7 @@ section.about-container {
     font-weight: bold;
   }
   div.main-container section.product-container {
-    padding: 4em 8em;
+    padding: 0 16em;
   }
   div.main-container section.product-container div.search-container input {
     padding: 0.4em;
@@ -315,9 +355,11 @@ section.about-container {
   }
 }
 @media screen and (min-width: 1280px) {
+  div.main-container section.hero-container div.left-content {
+    grid-template-columns: 1fr 1fr;
+  }
   div.main-container section.hero-container div.left-content h1 {
-    padding-top: 0.4em;
-    font-size: 43px;
+    font-size: 72px;
   }
   div.main-container section.hero-container div.left-content p {
     font-size: 18px;

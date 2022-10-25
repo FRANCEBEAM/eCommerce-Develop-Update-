@@ -290,10 +290,10 @@ section.about-container {
 }
 @media screen and (min-width: 1200px) {
   nav {
-    padding: 0 7em;
+    padding: 0 16em;
   }
   div.main-container section.hero-container {
-    padding: 4em 8em;
+    padding: 4em 16em;
     grid-template-columns: 1fr 1fr;
   }
   div.main-container section.hero-container div.left-content h1 {
@@ -308,7 +308,7 @@ section.about-container {
     width: 600px;
   }
   div.main-container section.store-container {
-    padding: 4em 8em;
+    padding: 4em 16em;
   }
   div.main-container section.store-container div.store {
     gap: 4em;
@@ -318,7 +318,7 @@ section.about-container {
     font-weight: bold;
   }
   div.main-container section.product-container {
-    padding: 4em 8em;
+    padding: 4em 16em;
   }
   div.main-container section.product-container div.search-container input {
     padding: 0.4em;

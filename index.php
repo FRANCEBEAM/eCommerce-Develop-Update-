@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>R.J. Avanceña</title>
   <?php include 'pages/customer/links/header.php' ?>
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/menubar.css">
 </head>
 <nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0">
   <div class="container-fluid">

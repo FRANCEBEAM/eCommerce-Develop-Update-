@@ -101,6 +101,7 @@ div.main-container{
           }
         }
         div.img-container{
+          padding-top: 4em;
           img{
             display: block;
             width: 100%;
@@ -117,7 +118,7 @@ div.main-container{
           }
         }
         form{
-          padding: 0 2em;
+          padding: 2em 2em;
         }
       }
     }
@@ -162,13 +163,13 @@ nav{
 // LAPTOP VIEW 1200
 @media screen and(min-width: 1200px){
   nav{
-    padding: 0 7em;
+    padding: 0 16em;
   }
 
  div.main-container{
 
         div.form-container{
-        padding: 0 5em;
+        padding: 0 16em;
           div.left-content{
             h1{
               font-size: 26px;
@@ -206,10 +207,10 @@ nav{
 
 @media screen and (min-width: 1390px){
       div.main-container{
-        padding: 5em 10em;
+        // padding: 5em 10em;
 
           div.form-container{
-            padding: 0 4em;
+            // padding: 0 4em;
             form{ 
               padding: 1.8em;
               h1{

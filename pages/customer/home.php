@@ -19,7 +19,7 @@ $fetch_info = mysqli_fetch_assoc($run_Sql);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
   <?php include 'links/header.php' ?>
-  <link rel="stylesheet" href="/assets/css/index.css">
+  <link rel="stylesheet" href="/assets/css/home.css">
 <link rel="stylesheet" href="/assets/css/menubar.css">
 </head>
 <nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0">

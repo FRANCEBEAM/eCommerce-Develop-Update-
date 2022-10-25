@@ -84,6 +84,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+  .modal.fade .modal-body div.left-content {
+    padding: 2em;
+    gap: 1em;
+  }
   .modal.fade .modal-body div.left-content img {
     width: 100%;
   }

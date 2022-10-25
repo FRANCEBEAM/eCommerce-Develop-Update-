@@ -120,10 +120,10 @@ div.col small {
 }
 @media screen and (min-width: 1200px) {
   nav {
-    padding: 0 7em;
+    padding: 0 16em;
   }
   div.main-container div.form-container {
-    padding: 4em 8em;
+    padding: 4em 16em;
   }
   div.main-container div.form-container div.left-content img {
     width: 90%;

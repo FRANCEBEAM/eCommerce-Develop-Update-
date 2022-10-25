@@ -74,6 +74,9 @@ div.main-container div.form-container div.right-content div.form-content button 
   div.main-container div.form-container div.left-content div.left-head p {
     font-size: 14px;
   }
+  div.main-container div.form-container div.left-content div.img-container {
+    padding-top: 4em;
+  }
   div.main-container div.form-container div.left-content div.img-container img {
     display: block;
     width: 100%;
@@ -85,7 +88,7 @@ div.main-container div.form-container div.right-content div.form-content button 
     font-size: 14px;
   }
   div.main-container div.form-container div.right-content form {
-    padding: 0 2em;
+    padding: 2em 2em;
   }
 }
 @media screen and (min-width: 993px) {
@@ -110,10 +113,10 @@ div.main-container div.form-container div.right-content div.form-content button 
 }
 @media screen and (min-width: 1200px) {
   nav {
-    padding: 0 7em;
+    padding: 0 16em;
   }
   div.main-container div.form-container {
-    padding: 0 5em;
+    padding: 0 16em;
   }
   div.main-container div.form-container div.left-content h1 {
     font-size: 26px;
@@ -135,12 +138,6 @@ div.main-container div.form-container div.right-content div.form-content button 
   }
 }
 @media screen and (min-width: 1390px) {
-  div.main-container {
-    padding: 5em 10em;
-  }
-  div.main-container div.form-container {
-    padding: 0 4em;
-  }
   div.main-container div.form-container form {
     padding: 1.8em;
   }

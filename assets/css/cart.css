@@ -50,6 +50,7 @@ div.cartList-container div.card div.card-body {
   text-align: left;
 }
 div.cartList-container div.card div.card-body h5 {
+  color: #1D1E23;
   padding-top: 0.8em;
   font-weight: 600;
   font-size: 18px;
@@ -87,8 +88,9 @@ div.cartList-container div.card div.card-body div.card-foot {
   justify-content: space-between;
   align-items: center;
 }
-div.cartList-container div.card div.card-body div.card-foot h5.total {
-  font-size: 16px;
+div.cartList-container div.card div.card-body div.card-foot p.total {
+  font-size: 18px;
+  color: #1D1E23;
 }
 div.cartList-container div.card div.card-body div.card-foot i.removeBtn {
   padding: 0 0.4em;
@@ -191,10 +193,10 @@ div.modal-dialog div.modal-content div.modal-body form button.orderBtn {
 }
 @media screen and (min-width: 1200px) {
   nav {
-    padding: 0 7em;
+    padding: 0 16em;
   }
   div.cartList-container {
-    padding: 0 6em;
+    padding: 0 16em;
   }
   div.cartList-container div.card div.img-container {
     width: 14%;
@@ -250,9 +252,6 @@ div.modal-dialog div.modal-content div.modal-body form button.orderBtn {
   }
 }
 @media screen and (min-width: 1390px) {
-  div.cartList-container {
-    padding: 0 13em;
-  }
   div.cartList-container div.card {
     padding: 0 1em;
   }

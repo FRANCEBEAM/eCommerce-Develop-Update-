@@ -178,10 +178,10 @@ div.main-container{
 // LAPTOP VIEW 1200
 @media screen and(min-width: 1200px){
   nav{
-    padding: 0 7em;
+    padding: 0 16em;
   }
  div.main-container{
-    padding: 5em 5em;
+    padding: 5em 16em;
     div.head-container{
         h1{
             font-size: 26px;
@@ -192,7 +192,7 @@ div.main-container{
         }
 
         div.form-container{
-        padding: 0 5em;
+        padding: 0 16em;
         form{
             div.card{
                 padding: 1.8em;
@@ -218,7 +218,7 @@ div.main-container{
 
 @media screen and (min-width: 1390px){
       div.main-container{
-        padding: 5em 12em;
+        // padding: 5em 12em;
         div.head-container{
             h1{
                 font-size: 26px;

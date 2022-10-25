@@ -38,8 +38,8 @@ if (isset($_POST["signup"])){
       $errors['email'] = "Email that you have entered is already exist!";
      }else{
 
-
-        $sql = "INSERT INTO users(firstname, lastname, username, email, phone, address, birthdate, gender , password, verification_code, email_verified_at) VALUES ('" . $firstname . "', '" . $lastname . "', '" . $username . "', '" . $email . "','" . $phone . "', '" . $address . "', '" . $birthdate . "', '" . $gender . "', '" . $encrypted_password . "', '" . $verification_code . "', NULL)";
+ 
+        $sql = "INSERT INTO users(firstname, lastname, username, email, phone, address, birthdate, gender , password, image, verification_code, email_verified_at) VALUES ('" . $firstname . "', '" . $lastname . "', '" . $username . "', '" . $email . "','" . $phone . "', '" . $address . "', '" . $birthdate . "', '" . $gender . "', '" . $encrypted_password . "' ,'" . $verification_code . "', NULL)";
 
         $result = mysqli_query($conn, $sql);
 
@@ -250,25 +250,25 @@ if (isset($_POST["signup"])){
       </div>
 
       <!-- Phone input -->
-      <div class="col mb-4">
+      <!-- <div class="col mb-4">
         <div class="form-outline">
           <input type="number" class="form-control" id="phone" name="phone"/>
           <label class="form-label" for="phone">Phone number</label>
         </div>
         <small class="errorEmail"></small>
-      </div>
+      </div> -->
 
       <!-- Address input -->
-      <div class="col mb-4">
+      <!-- <div class="col mb-4">
         <div class="form-outline">
           <input type="text" class="form-control" id="address" name="address"/>
           <label class="form-label" for="address">Address</label>
         </div>
         <small class="errorEmail"></small>
-      </div>
+      </div> -->
 
       <!-- Birthdate input -->
-      <div class="col mb-4">
+      <!-- <div class="col mb-4">
         <div class="input-group date" id="datepicker">
             <input type="text" class="form-control date" id="datepicker" name="birthdate">
             <span class="input-group-append">
@@ -277,15 +277,15 @@ if (isset($_POST["signup"])){
                 </span>
             </span>   
           </div>
-      </div>
+      </div> -->
 
       <!-- Gender input -->
-      <div class="input-group mb-3">
+      <!-- <div class="input-group mb-3">
           <select class="form-select" id = "genderSelect" aria-label="Default select example" name="gender">
             <option value="Male">Male</option>
             <option value="Female">Female</option>
           </select>
-        </div>
+        </div> -->
 
       
       

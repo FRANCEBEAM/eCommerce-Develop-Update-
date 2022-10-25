@@ -103,7 +103,7 @@ if (!isset($_SESSION['email'])) {
   <div class="form-container">
     <div class="head-content">
         <h2 class="mb-5 text">Create new password</h2>
-        <img class="mb-4" src="/assets/img/newpass.png" alt="">
+          <p>Hi! to continue. Set a new password</p>
 
                     <?php
                     if(count($errors) > 0){

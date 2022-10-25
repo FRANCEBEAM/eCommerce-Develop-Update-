@@ -281,14 +281,15 @@ section.about-container{
           div.body-info{
             justify-content: space-between;
             margin: 0;
-            width: 300px;
+            width: 267px;
+            
             h5{
               font-size: 16px;
               font-weight: 700;
             }
             p{
               padding-top: .8em;
-              font-size: 12px;
+              font-size: 11px;
             }
           }
         }
@@ -385,12 +386,13 @@ section.about-container{
 
 @media screen and(min-width: 1200px){
   nav{
-    padding: 0 7em;
+    padding: 0 16em;
   }
   div.main-container{
     section.hero-container{
+      padding: 0 16em;
       grid-template-columns: 2fr 1fr;
-      padding: 12em 8em;
+      padding: 12em 16em;
         div.left-content{
           small{
             font-size: 20px;
@@ -417,7 +419,7 @@ section.about-container{
 
     }
     section.store-container{
-      padding: 4em 8em;
+      padding: 4em 16em;
       div.store{
         gap: 4em;
       }
@@ -431,7 +433,7 @@ section.about-container{
       }
     }
     section.product-container{
-      padding: 4em 8em;
+      padding: 0 16em;
       div.search-container{
         input{
           padding: .4em;

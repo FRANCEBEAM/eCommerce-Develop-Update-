@@ -148,7 +148,7 @@ if (!isset($_SESSION['email'])) {
 
     ?>
 
-  <div class="card product_data mb-2">
+  <div class="card product_data mb-4">
     <div class="img-container">
           <img src="<?=$row['image_path']?>" alt="">
     </div>
@@ -179,7 +179,7 @@ if (!isset($_SESSION['email'])) {
   </div>
 
       <div class="card-foot">
-        <h5 class="card-title total"><b>Total:</b> <i class="fa-solid fa-peso-sign"></i><?= number_format($row['price']*$row['qty']); ?></h5>
+        <p class="card-title total"><b>Total:</b> <i class="fa-solid fa-peso-sign"></i><?= number_format($row['price']*$row['qty']); ?></p>
         <a href="./config/action.php?remove=<?= $row['id'] ?>" class="text-danger btnRemove" onclick="deletedata(<?php echo $row['id'];?>)"><i class="bi bi-trash3-fill text-danger removeBtn"></i></a>
       </div>
     </div>

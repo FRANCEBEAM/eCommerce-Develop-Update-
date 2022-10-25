@@ -179,7 +179,7 @@ if (isset($_POST["btnChange"])){
         <p>Fill all the information and personalize as your profile settings and security.</p>
       </div>
       <div class="img-container">
-        <img src="/assets/img/settings.svg" alt="">
+        <img src="/assets/img/accountSec.svg" alt="">
       </div>
       </div>
       <div class="right-content">
