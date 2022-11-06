@@ -1,5 +1,6 @@
 <?php 
 session_start();
+error_reporting(0);
 include('config/connection.php');
 
 // $cartid=$_POST['cart_id'];

@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 require 'config/connection.php';
 session_start();
 $errors = array();

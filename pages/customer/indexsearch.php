@@ -1,5 +1,6 @@
 
 <?php
+error_reporting(0);
 require 'config/connection.php';
 $output = '';
 if(isset($_POST["query"]))

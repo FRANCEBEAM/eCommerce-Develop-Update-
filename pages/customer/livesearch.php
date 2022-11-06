@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="/assets/css/livesearch.css">
 <?php
+error_reporting(0);
 require 'config/connection.php';
 $output = '';
 if(isset($_POST["query"]))
@@ -60,6 +61,7 @@ if(mysqli_num_rows($result) > 0)
         <h1 class="card-text m-0 fw-bold">'.$row["product"].'</h1>
         <small>'.$row["supplier"].'</small>
         <h5 class="card-title mt-3"><b><i class="fa-solid fa-peso-sign"></i>&nbsp;'.$row["price"].'</b></h5>
+        <p class="card-title mt-3">Available Stock: <b>'.$row["quantity"].'</b></p>
         <p class="description">'.$row["descriptions"].'</p>
         <form action="" class="form-submit">
         <input type="hidden" class="form-control quantity" value="1">

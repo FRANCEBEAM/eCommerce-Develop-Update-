@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 require 'connection.php';
 
 // Add products into the cart table
@@ -37,6 +38,7 @@ if (isset($_POST['id'])) {
 			timer: 1500
 		})</script>';
 	} else {
+		
 		echo '<script>
 		Swal.fire({
 			position: "top-start",

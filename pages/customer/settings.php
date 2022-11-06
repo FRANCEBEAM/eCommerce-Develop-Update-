@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 require 'config/connection.php';
 session_start();
 if (!isset($_SESSION['email'])) {
@@ -170,7 +171,7 @@ if (isset($_POST["btnChange"])){
   </div>
 </nav>
 
-<body style="background-color: #E1E1EA">
+<body>
   <div class="main-container">
       <div class="form-container">
       <div class="left-content">

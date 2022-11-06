@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 //Load Composer's autoloader
 require 'config/connection.php';
 $errors = array();

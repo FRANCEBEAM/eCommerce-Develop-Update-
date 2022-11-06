@@ -119,10 +119,12 @@ $(document).ready(function (){
     
     
     var value = parseInt(inputQty);
+    var maxVal = parseInt(maxQty);
     // var maxVal = parseInt(maxQty);
 
     value = isNaN(value) ? 0 : value;
-    if(value <maxQty){
+
+    if(value < maxVal){
       value++;
       $(this).closest('.product_data').find('.itemQty').val(value);
     }
@@ -162,6 +164,7 @@ $(document).ready(function (){
       success: function(response){
           // alert(response);
           location.reload(true);
+          $("#message").html(response);
       }
     })
 

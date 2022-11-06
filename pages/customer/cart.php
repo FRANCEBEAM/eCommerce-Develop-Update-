@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 require '../customer/config/connection.php';
 $email = $_SESSION['email'];
 
@@ -169,7 +170,6 @@ if (!isset($_SESSION['email'])) {
       <div class="qty-container">
         <div class="btn btn-outline-dark value-button decrementBtn updateQty" id="decrease"  value="Decrease Value"><i class="fa-sharp fa-solid fa-minus"></i></div>
 
-  
         <input type="number" class="form-control itemQty" name="qty" id="itemQty" value="<?php echo $row['qty']; ?>">
 
         <div class="btn btn-dark value-button incrementBtn updateQty" id="increase" value="Increase Value"><i class="fa-sharp fa-solid fa-plus"></i></div>
@@ -187,7 +187,7 @@ if (!isset($_SESSION['email'])) {
   <?php endwhile; ?>
   <div class="total-container">
     <h5 class="sub-total"><b>Subtotal:&nbsp;&nbsp;</b><i class="fa-solid fa-peso-sign"></i><?= number_format($grand_total,2); ?></h5>
-    <a class="btn btn-success mt-4 mb-5 <?= ($grand_total > 1) ? '' : 'disabled'; ?>" data-bs-toggle="modal" data-bs-target="#modalOrder"><b>CHECKOUT</b>&nbsp;&nbsp;<svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <a class="btn btn-lg btn-success mt-4 mb-5 <?= ($grand_total > 1) ? '' : 'disabled'; ?>" data-bs-toggle="modal" data-bs-target="#modalOrder"><b>CHECKOUT</b>&nbsp;&nbsp;<svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M12.8377 8.01561H1.63281C1.38689 8.01561 1.1875 8.215 1.1875 8.46092V10.539C1.1875 10.785 1.38689 10.9844 1.63281 10.9844H12.8377V12.6936C12.8377 13.4871 13.797 13.8844 14.3581 13.3234L17.5517 10.1298C17.8995 9.78194 17.8995 9.21803 17.5517 8.87024L14.3581 5.67664C13.797 5.11558 12.8377 5.51295 12.8377 6.30642V8.01561V8.01561Z" fill="white"/>
       </svg>
     </a>
@@ -214,7 +214,7 @@ if (!isset($_SESSION['email'])) {
 	}
 	$allItems = implode(', ', $items);
 ?>
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Checkout Details</h5>
@@ -223,7 +223,7 @@ if (!isset($_SESSION['email'])) {
       <div class="modal-body">
         <div class="" id="order">
          <h4 class="text-center text-success p-2 mb-5">Confirm your orders and details</h4>
-         <div class="p-3 mb-2 text-center displayOrder">
+         <div class="p-3 mb-1 text-center displayOrder">
           <h5><b>Products: </b><?= $allItems; ?></h5>
           <h5 class="mt-3"><b>Total Amount: </b><?=number_format($grand_total,2) ?></h5>
         </div>
@@ -231,27 +231,27 @@ if (!isset($_SESSION['email'])) {
           <input type="hidden" name="products" value="<?= $allItems; ?>">
           <input type="hidden" name="grand_total" value="<?= $grand_total; ?>">
           <div class="form-group">
-          <label class="form-label">Full Name:</label>
+          <label class="form-label"><b>Full Name:</b></label>
             <input type="text" name="fullname" class="form-control" placeholder="Enter Name" value='<?php echo $fetch_info['firstname'] ." ". $fetch_info['lastname']?>'>
           </div>
           <div class="form-group">
-          <label class="form-label">Email:</label>
+          <label class="form-label"><b>Email:</b></label>
             <input type="email" name="email" class="form-control" placeholder="Enter Email" value='<?php echo $fetch_info['email'] ?>'>
           </div>
           <div class="form-group">
-          <label class="form-label">Phone Number:</label>
+          <label class="form-label"><b>Phone Number:</b></label>
             <input type="tel" name="phone" class="form-control" placeholder="Enter Phone" required value='<?php echo $fetch_info['phone']?>'>
           </div>
           <div class="form-group">
-          <label class="form-label">Address:</label>
-            <textarea name="address" class="form-control" rows="3" cols="10" placeholder="Enter Delivery Address Here..." required></textarea>
+          <label class="form-label"><b>Address:</b></label>
+        
+            <input type="address" name="address" class="form-control" placeholder="Enter Address Here..." value='<?php echo $fetch_info['address'] ?>' required>
           </div>
           <h6 class="text-center lead mt-5 fw-bold">Select Payment Mode</h6>
           <div class="form-group">
             <select name="paymentmode" class="form-control mt-3">
               <option value="Cash On Delivery"></i>Cash On Delivery</option>
-              <option value="Walk-in">Walk-In</option>
-              <option value="Debit/Credit Card">Debit/Credit Card</option>
+              <option value="Walk-in">Walk-In</option> 
             </select>
           </div>
           <div class="modal-footer">

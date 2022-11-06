@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 require 'config/connection.php';
 session_start();
 
@@ -28,27 +29,6 @@ $gender = mysqli_real_escape_string($conn, $_POST["gender"]);
         echo "<script>alert('Profile can not Updated.');</script>";
         echo  $conn->error;
     }
-
-
-// $update_image = $_FILES['update_image']['name'];
-// $update_image_size = $_FILES['update_image']['size'];
-// $update_image_tmp_name = $_FILES['update_image']['tmp_name'];
-// $update_image_folder = "upload/";
-
-// if ($update_image_size > 5242880) {
-//   echo "<script>alert('Photo is very big. Maximum photo uploading size is 5MB.');</script>";
-// } else {
-//   $sql = "UPDATE users SET phone='$phone', address='$address', birthdate='$birthdate', gender= '$gender', image = '$update_image' WHERE email='{$_SESSION["email"]}'";
-//   $result = mysqli_query($conn, $sql);
-//   if ($result) {
-//       echo "<script>alert('Profile Updated successfully.');</script>";
-//       move_uploaded_file($update_image_tmp_name, $update_image_folder);
-//   } else {
-//       echo "<script>alert('Profile can not Updated.');</script>";
-//       echo  $conn->error;
-//   }
-// }
-
 }
 
 $email = $_SESSION['email'];
@@ -293,7 +273,16 @@ $fetch_info = mysqli_fetch_assoc($run_Sql);
               </div>
               <p class="card-text">Fill your date of birth to recognize your age. This will consider as your information.</p>
               <div class="input-group mb-3">
-              <input type='text' class="form-control" name="birthdate" placeholder= "mm/dd/yyyy" value='<?php echo $fetch_info['birthdate'] ?>'>
+
+              <div class="input-group date" id="datepicker">
+            <input type="text" class="form-control date" id="datepicker" name="birthdate" value="<?php echo $fetch_info['birthdate'] ?>">
+            <span class="input-group-append">
+                <span class="input-group-text bg-white">
+                    <i class="fa fa-calendar"></i>
+                </span>
+            </span>   
+          </div>
+            
               </div>
             </div>
           </div>
@@ -301,7 +290,7 @@ $fetch_info = mysqli_fetch_assoc($run_Sql);
           <div class="card">
             <div class="card-body">
               <div class="card-head">
-                <h1 class="mb-4">Sex: <i class="fa-sharp fa-solid fa-person"></i></i></h1>
+                <h1 class="mb-4">Gender: <i class="fa-sharp fa-solid fa-person"></i></i></h1>
               </div>
               <p class="card-text">Setup your identity.</p>
 
@@ -338,6 +327,13 @@ $fetch_info = mysqli_fetch_assoc($run_Sql);
 </script>
 
 <script src="/assets/js/addcart.js"></script>
+<script src="/assets/js/datepicker.min.js"></script>
+
+<script>
+        $(function() {
+            $('#datepicker').datepicker();
+        });
+</script>
 <script type="text/javascript">
       document.getElementById("fileImg").onchange = function(){
         document.getElementById("image").src = URL.createObjectURL(fileImg.files[0]); // Preview new image
