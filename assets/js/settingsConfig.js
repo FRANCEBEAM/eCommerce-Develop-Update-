@@ -1,16 +1,16 @@
 $(document).ready(function () {
 
 
-    $('#password').on('input', function () {
+    $('#newpass').on('input', function () {
         checkPassword();
     });
   
-    $('#cpassword').on('input', function () {
+    $('#conpass').on('input', function () {
       checkConPassword();
     });
   
   
-    $('#btnResetPass').click(function () {
+    $('#btnChange').click(function () {
   
   
         if (!checkPassword() && !checkConPassword()) {
@@ -25,7 +25,7 @@ $(document).ready(function () {
             var data = new FormData(form);
             $.ajax({
                 type: "POST",
-                url: "/pages/customer/config/newpassAction.php",
+                url: "/pages/customer/config/settingsAction.php",
                 data: data,
                 processData: false,
                 contentType: false,
@@ -34,14 +34,14 @@ $(document).ready(function () {
   
                 success: function (data) {
                     $('#message').html(data);
-                    window.location = "../customer/changed.php";
+            
                 },
                 complete: function () {
                     setTimeout(function () {
                         $('#form').trigger("reset");
-                        $('#btnResetPass').html('Submit');
-                        $('#btnResetPass').attr("disabled", false);
-                        $('#btnResetPass').css({ "border-radius": "4px" });
+                        $('#btnChange').html('Submit');
+                        $('#btnChange').attr("disabled", false);
+                        $('#btnChange').css({ "border-radius": "4px" });
                     }, 30000);
                 }
             });
@@ -55,7 +55,7 @@ $(document).ready(function () {
   
   function checkPassword() {
     var regEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-    var password = $('#password').val();
+    var password = $('#newpass').val();
     var validpass = regEx.test(password);
   
     if (password == "") {
@@ -71,8 +71,8 @@ $(document).ready(function () {
   }
 
   function checkConPassword() {
-    var password = $('#password').val();
-    var cpassword = $('#cpassword').val();
+    var password = $('#newpass').val();
+    var cpassword = $('#conpass').val();
     if (cpassword == "") {
         $('#errorConPass').html('Please enter your confirm password');
         return false;

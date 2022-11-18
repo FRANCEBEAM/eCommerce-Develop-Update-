@@ -106,7 +106,7 @@ $errors = array();
       <?php
         if(count($errors) > 0){
           ?>
-          <div class=" bg-danger text-danger text-sm-center mt-4 p-4 text-white rounded-4">
+          <div class="text-danger text-sm-center mt-4 p-3 rounded-4">
               <?php
               foreach($errors as $showerror){
                   echo $showerror;

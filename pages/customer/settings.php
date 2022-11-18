@@ -1,59 +1,17 @@
 <?php
-error_reporting(0);
-require 'config/connection.php';
-session_start();
-if (!isset($_SESSION['email'])) {
-    header("Location: signin.php");
-}
-$email = $_SESSION['email'];
-$sql = "SELECT * FROM users WHERE email = '$email'";
-$run_Sql = mysqli_query($conn, $sql);
-$fetch_info = mysqli_fetch_assoc($run_Sql);
-  
 
-//IF USERS WANTS TO CHANGE THEIR PASSWORD
-$user_id = $_SESSION["email"];
-$passChange = "";
-if (isset($_POST["btnChange"])){
-  // Get all input fields
-  $oldpass = $_POST["oldpass"];
-  $newpass = $_POST["newpass"];
-  $conpass = $_POST["conpass"];
-
-
-  // Check if current password is correct
-  $sql = "SELECT * FROM users WHERE email = '".$user_id."'";
-  $result = mysqli_query($conn, $sql);
-  $row = mysqli_fetch_object($result);
-  
-  if (password_verify($oldpass, $row->password)){
-    // Check if password is same
-    if ($newpass == $conpass)
-    {
-				// Change password
-				$sql = "UPDATE users SET password = '" . password_hash($newpass, PASSWORD_DEFAULT) . "' WHERE email = '".$user_id."'";
-				mysqli_query($conn, $sql);
-
-				$passChange = "
-                <div class='alert alert-success'>Password has been changed</div>
-                ";
-     
-    }
-    else
-    {
-      $passChange = "<div class='alert alert-danger'>Password does not match</div>";
+  require 'config/connection.php';
+  session_start();
+  if (!isset($_SESSION['email'])) {
+      header("Location: signin.php");
+  }
+  $user_id = $_SESSION["email"];
+  $email = $_SESSION['email'];
+  $sql = "SELECT * FROM users WHERE email = '$email'";
+  $run_Sql = mysqli_query($conn, $sql);
+  $fetch_info = mysqli_fetch_assoc($run_Sql);
     
-    }
-  }
-  else
-  {
-    $passChange = "<div class='alert alert-danger'>Old password not matched</div>";
-  
-  }
-}
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -187,33 +145,27 @@ if (isset($_POST["btnChange"])){
       <div class="right-head">
         <h1><?php echo $fetch_info['firstname']; ?> <?php echo $fetch_info['lastname']; ?></h1>
         <p><?php echo $_SESSION['email']; ?></p>
-        <?php 
-            if($passChange){
-                ?>
-                 <div class="text-danger text-sm-center">            
-                   <?php echo $passChange; ?>              
-                </div>
-                <?php
-            }
-            ?>
+         <div id="message"></div>
       </div>
       <div class="form-content">
-        <form method="POST" action="./settings.php" >
+        <form method="POST" id="form">
             <div class="oldpass mb-4">
                 <h1>Old Password:</h1>
-                 <input type="password" id="form2Example2" class="form-control" name="oldpass"/>
+                 <input type="password" id="oldpass" class="form-control" name="oldpass"/>
             </div>
 
             <div class="newpass mb-4">
                 <h1>New Password:</h1>
-                    <input type="password" class="form-control mt-2" id="formGroupExampleInput" name="newpass" placeholder="Enter your new password" required>
+                    <input type="password" class="form-control mt-2" id="newpass" name="newpass" placeholder="Enter your new password" required>
+                    <small class="errorPass text-danger mb-4" id="errorPassword"></small>
             </div>
 
             <div class="conpass mb-4">
                 <h1>Confirm Password:</h1>
-                    <input type="password" class="form-control mt-2" id="formGroupExampleInput" name="conpass" placeholder="Re-enter your new password" required>
+                    <input type="password" class="form-control mt-2" id="conpass" name="conpass" placeholder="Re-enter your new password" required>
+                    <small class="errorConpass text-danger mb-4" id="errorConPass"></small>
             </div>
-        <button type="submit" class="btn btn-primary btn-lg mt-4" name="btnChange">Save changes</button>
+        <button type="button" class="btn btn-primary btn-lg mt-4" id="btnChange" name="btnChange">Save changes</button>
       </form>
       </div>
       </div>
@@ -221,6 +173,7 @@ if (isset($_POST["btnChange"])){
   </div>
 
   <?php include 'links/footer.php' ?>
+<script src="/assets/js/settingsConfig.js"></script>
 <script src="/assets/js/addcart.js"></script>
 </body>
 </html>
