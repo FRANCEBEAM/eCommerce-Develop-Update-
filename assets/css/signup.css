@@ -32,7 +32,7 @@ div.main-container div.right-content small {
   font-weight: 500;
 }
 div.main-container div.right-content form {
-  margin-top: 9em;
+  margin-top: 5em;
 }
 div.main-container div.right-content form input {
   -webkit-appearance: none;
@@ -42,6 +42,7 @@ div.main-container div.right-content form button {
   background: #2C52D8;
   font-weight: bold;
   text-transform: capitalize;
+  font-size: 17px;
 }
 div.main-container div.right-content form small {
   margin: 0;
@@ -139,7 +140,7 @@ div.main-container div.right-content form small {
     padding: 2em 12em;
   }
   div.main-container div.form-container {
-    padding: 4em 3em;
+    padding: 7em 3em;
   }
   div.main-container div.form-container div.left-content img {
     width: 500px;

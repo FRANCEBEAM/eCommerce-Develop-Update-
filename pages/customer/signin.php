@@ -106,7 +106,7 @@ $errors = array();
       <?php
         if(count($errors) > 0){
           ?>
-          <div class="text-danger text-sm-center">
+          <div class=" bg-danger text-danger text-sm-center mt-4 p-4 text-white rounded-4">
               <?php
               foreach($errors as $showerror){
                   echo $showerror;
@@ -119,11 +119,10 @@ $errors = array();
       <form id="form" class="form" method="POST">
         <!-- Email input -->
         <div class="col">
-        <div class="form-outline">
+        <div class="form-outline text-center">
           <input type="email" id="email" class="form-control form-control-lg" name="email"/>
           <label class="form-label" for="email"><i class="fas fa-user-alt" ></i> Email address</label>
         </div>
-        <small class="errorEmail"></small>
         </div>
       
         <!-- Password input -->
@@ -131,8 +130,7 @@ $errors = array();
         <div class="form-outline">
           <input type="password" id="password" class="form-control form-control-lg" name="password"/>
           <label class="form-label" for="password"><i class="fas fa-unlock"></i> Password</label>
-        </div>
-        <small class="errorPass"></small>
+        </div>  
        </div>
         
       
@@ -157,7 +155,7 @@ $errors = array();
       
         <!-- Register buttons -->
         <div class="text-center mt-4">
-          <p>Not a member? <a href="./signup.php">Register</a></p>
+          <p>Not a member? <a href="./signup.php">Sign up</a></p>
         </div>
       </form>
     </div>

@@ -139,12 +139,8 @@ if (!isset($_SESSION['email'])) {
         $stmt->execute();
         $result = $stmt->get_result();
 
-        $sql = $conn->prepare("SELECT * FROM `inventory` where id");
-        $sql->execute();
-        $result1 = $sql->get_result();
-        $row1 = $result1 ->fetch_assoc();
-
-        while (($row = $result->fetch_assoc()) && ($row1 = $result1->fetch_assoc())):
+  
+        while ($row = $result->fetch_assoc()):
         $grand_total = $grand_total+($row['qty']*$row['price']);
 
     ?>
@@ -158,20 +154,21 @@ if (!isset($_SESSION['email'])) {
       <small><?= $row['supplier'] ?></small>
       <p class="card-text"><i class="fa-solid fa-peso-sign"></i>&nbsp;&nbsp;<?= number_format($row['price'],2); ?></p>
 
-      <!-- Mark me as debugging -->
-      <input type="hidden" class="prod_id" name="prod_id" value="<?php  echo $row1['id'];?>">
-        <input type="hidden" class="prodQty" name="prodQty" value="<?php echo $row1['quantity'];?>">
-    
+
+     
   <div class="qty-container">
     <form>
       <input type="hidden" class="cart_id" name="cart_id" value="<?php  echo $row['id'];?>">
      
       <!-- Quantity Container -->
       <div class="qty-container">
+        <!--Minus BTN -->
         <div class="btn btn-outline-dark value-button decrementBtn updateQty" id="decrease"  value="Decrease Value"><i class="fa-sharp fa-solid fa-minus"></i></div>
 
+          <!--Qty field -->
         <input type="number" class="form-control itemQty" name="qty" id="itemQty" value="<?php echo $row['qty']; ?>">
 
+            <!--Plus BTN -->
         <div class="btn btn-dark value-button incrementBtn updateQty" id="increase" value="Increase Value"><i class="fa-sharp fa-solid fa-plus"></i></div>
       </div>
 

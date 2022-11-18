@@ -115,16 +115,15 @@ $(document).ready(function (){
     e.preventDefault()
 
     var inputQty = $(this).closest('.product_data').find('.itemQty').val();
-    var maxQty = $(this).closest('.product_data').find('.prodQty').val();
+    var maxQty = $(this).closest('.right-content').find('.inv-qty').val();
     
     
     var value = parseInt(inputQty);
     var maxVal = parseInt(maxQty);
-    // var maxVal = parseInt(maxQty);
 
     value = isNaN(value) ? 0 : value;
 
-    if(value < maxVal){
+    if(value){
       value++;
       $(this).closest('.product_data').find('.itemQty').val(value);
     }

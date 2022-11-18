@@ -46,7 +46,7 @@ div.main-container{
       font-weight: 500;
     }
     form{
-      margin-top: 9em;
+      margin-top: 5em;
       input{
         -webkit-appearance: none; 
         -moz-appearance: textfield; 
@@ -55,6 +55,7 @@ div.main-container{
         background: #2C52D8;
         font-weight: bold;
         text-transform: capitalize;
+        font-size: 17px;
       }
       small{
         margin: 0;
@@ -200,7 +201,7 @@ div.main-container{
   div.main-container{
     padding: 2em 12em;
     div.form-container{
-      padding: 4em 3em;
+      padding: 7em 3em;
       div.left-content{
         img{
           width: 500px;

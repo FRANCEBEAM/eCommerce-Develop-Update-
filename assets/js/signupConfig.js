@@ -1,85 +1,180 @@
-const form = document.getElementById("form");
-const firstname = document.getElementById("firstName");
-const lastname = document.getElementById("lastName");
-const username = document.getElementById("username");
-const email = document.getElementById("email");
-const password = document.getElementById("password");
-const conpass = document.getElementById("conpass");
+$(document).ready(function () {
 
 
-//Check the fields
-function checkField(){
-  if(firstname.value === '' || lastname.value ==='' || username.value ==='' || email.value ==='' || password.value === '' || conpassword.value === ''){
-    document.querySelector('.errorFirst').style.color = "#e74c3c";
-    document.querySelector('.errorFirst').innerHTML = "Please fill first name";
-    document.querySelector('.errorFirst').style.visibility  = "visible";
+  $('#firstName').on('input', function () {
+    checkFirstName();
+  });
 
-    document.querySelector('.errorLast').style.color = "#e74c3c";
-    document.querySelector('.errorLast').innerHTML = "Please fill last name";
-    document.querySelector('.errorLast').style.visibility  = "visible";
+  $('#lastName').on('input', function () {
+    checkLastName();
+  });
 
-    document.querySelector('.errorEmail').style.color = "#e74c3c";
-    document.querySelector('.errorEmail').innerHTML = "Please fill email";
-    document.querySelector('.errorEmail').style.visibility  = "visible";
 
-    document.querySelector('.errorConpass').style.color = "#e74c3c";
-    document.querySelector('.errorConpass').innerHTML = "Confirm Password is required";
-    document.querySelector('.errorConpass').style.visibility  = "visible";
-  }else{
-    document.querySelector('.errorFirst').innerHTML = "";
-    document.querySelector('.errorLast').innerHTML = "";
-    document.querySelector('.errorUsername').innerHTML = "";
-    document.querySelector('.errorEmail').innerHTML = "";
-    document.querySelector('.errorConpass').innerHTML = "";
-  }
-  }
+  $('#email').on('input', function () {
+      checkEmail();
+  });
 
-  //check username input length
-  function checkLength(){
-    inputValue = document.querySelector('#username');
+  $('#email').on('input', function () {
+    checkEmailDB();
+});
+  
 
-    if(inputValue.value.length < 7) {
-         document.querySelector('.errorUsername').style.color = "#e74c3c";
-        document.querySelector('.errorUsername').innerHTML = "Username must be atleast 7 characters";
-        document.querySelector('.errorUsername').style.visibility  = "visible";
-      }else if(inputValue.value.length >14){
-        document.querySelector('.errorUsername').style.color = "#e74c3c";
-        document.querySelector('.errorUsername').innerHTML = "Username must be less than 14 characters";
-        document.querySelector('.errorUsername').style.visibility  = "visible";
+  $('#password').on('input', function () {
+      checkPassword();
+  });
+
+  $('#conpassword').on('input', function () {
+    checkConPassword();
+  });
+
+
+  $('#btnSignup').click(function () {
+
+
+      if (!checkFirstName() && !checkLastName() && !checkEmail() && !checkPassword() && !checkConPassword()) {
+          $("#message").html(`<div class="bg-danger text-white p-3 rounded-4"><i class="fas fa-exclamation-circle"></i> Please fill all required field</div>`);
+      } else if (!checkFirstName() || !checkLastName() || !checkEmail() || !checkPassword() || !checkConPassword())  {
+          $("#message").html(`<div class="bg-danger text-white p-3 rounded-4"><i class="fas fa-exclamation-circle"></i> Please fill all required field</div>`);
+      }
+      else {
+          console.log("ok");
+          $("#message").html("");
+          var form = $('#form')[0];
+          var data = new FormData(form);
+          $.ajax({
+              type: "POST",
+              url: "/pages/customer/config/signupAction.php",
+              data: data,
+              processData: false,
+              contentType: false,
+              cache: false,
+              async: false,
+
+              success: function (data) {
+                  $('#message').html(data);
+                  window.location = "../customer/otp.php?email=";
+              },
+              complete: function () {
+                  setTimeout(function () {
+                      $('#form').trigger("reset");
+                      $('#btnSignup').html('Submit');
+                      $('#btnSignup').attr("disabled", false);
+                      $('#btnSignup').css({ "border-radius": "4px" });
+                  }, 30000);
+              }
+          });
+      }
+  });
+});
+
+
+function checkFirstName() {
+  var pattern = /^[a-zA-Z\s]*$/;;
+  var firstName = $('#firstName').val();
+  var validuser = pattern.test(firstName);
+    if (!validuser) {
+        $('#errorFirst').html('First name should be a-z ,A-Z only');
+        return false;
+    }else if(firstName == ''){
+        $('#errorFirst').html('Please provide your first name');
+        return false;
+    }else {
+        $('#errorFirst').html('');
+        return true;
+    }
+}
+
+function checkLastName() {
+    var pattern = /^[a-zA-Z\s]*$/;;
+    var lastName = $('#lastName').val();
+    var validuser = pattern.test(lastName);
+      if (!validuser) {
+          $('#errorLast').html('Last name should be a-z ,A-Z only');
+          return false;
+      }else if(lastName == ''){
+        $('#errorLast').html('Please provide your last name');
+        return false;
+      }else {
+          $('#errorLast').html('');
+          return true;
       }
   }
 
-  // check password input length
-  function passwordLength(){
-    passLength = document.querySelector("#password")
-    if(passLength.value.length < 7){
-      document.querySelector('.errorPass').style.color = "#e74c3c";
-      document.querySelector('.errorPass').innerHTML = "Password must be atleast 7 Characters"
-      document.querySelector('.errorPass').style.visibility  = "visible";
-    }else{
-      document.querySelector('.errorPass').innerHTML = "";
-    }
+
+
+function checkEmail() {
+
+jQuery.ajax({
+    url: "/pages/customer/config/emailCheck.php",
+    data:'email='+$("#email").val(),
+    type: "POST",
+    success:function(data){
+        $("#errorEmailDB").html(data);
+    },
+    error:function (){}
+    });
+
+  var regEx = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+  var email = $('#email').val();
+  var validemail = regEx.test(email);
+  if (email == "") {
+      $('#errorEmail').html('Email is required');
+      return false;
+  } else if (!validemail) {
+      $('#errorEmail').html('Invalid email address');
+      return false;
+  } else {
+      $('#errorEmail').html('');
+      return true;
   }
-
-  //check password
-  function checkPassword(){
-    inputPass = document.querySelector("#password");
-    inputConpass = document.querySelector("#conpassword");
-
-    if(inputPass.value !== inputConpass.value){
-      document.querySelector('.errorConpass').style.color = "#e74c3c";
-        document.querySelector(".errorConpass").innerHTML = "Password not matched";
-        document.querySelector('.errorConpass').style.visibility  = "visible";
-    }
-  }
-
-
-form.addEventListener('submit', (e)=>{
-  e.preventDefault()
   
-  checkField();
-  checkLength();
-  passwordLength();
-  checkPassword()
-})
+}
 
+
+function checkPassword() {
+  var regEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+  var password = $('#password').val();
+  var validpass = regEx.test(password);
+
+  if (password == "") {
+      $('#errorPassword').html('Please enter your password');
+      return false;
+  } else if (!validpass) {
+      $('#errorPassword').html('Password should atleast 7 characters, and one uppercase letter, one lowercase letter, one number');
+      return false;
+  } else {
+      $('#errorPassword').html("");
+      return true;
+  }
+}
+function checkConPassword() {
+  var password = $('#password').val();
+  var conpassword = $('#conpassword').val();
+  if (conpassword == "") {
+      $('#errorConPass').html('Please enter your confirm password');
+      return false;
+  } else if (password !== conpassword) {
+      $('#errorConPass').html('Confirm password did not match');
+      return false;
+  } else {
+      $('#errorConPass').html('');
+      return true;
+  }
+}
+
+
+function password_show_hide() {
+  var x = document.getElementById("password");
+  var show_eye = document.getElementById("show_eye");
+  var hide_eye = document.getElementById("hide_eye");
+  hide_eye.classList.remove("d-none");
+  if (x.type === "password") {
+      x.type = "text";
+      show_eye.style.display = "none";
+      hide_eye.style.display = "block";
+  } else {
+      x.type = "password";
+      show_eye.style.display = "block";
+      hide_eye.style.display = "none";
+  }
+}
