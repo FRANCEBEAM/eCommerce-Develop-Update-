@@ -135,7 +135,7 @@
       <div class="left-content">
       <div class="left-head">
         <h1>Account Setting</h1>
-        <p>Fill all the information and personalize as your profile settings and security.</p>
+        <p>Change your account password, so your account will be safe.</p>
       </div>
       <div class="img-container">
         <img src="/assets/img/accountSec.svg" alt="">

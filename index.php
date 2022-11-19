@@ -107,32 +107,18 @@
         <input type="search" class="form-control form-control-lg searchInput" id="datatable-search-input">
         <label class="form-label" for="datatable-search-input"><i class="fas fa-search"></i>&nbsp; &nbsp;Search..</label>
       </div>
-      <p class=" popular mt-2"><b>Popular:</b> Rain or shine, Drill bit, Wood LP5, Grills</p>
-
-      <div class="dropdown mb-5">
-        <button class="btn dropdown-toggle fw-bold" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          Product Categories
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#">Hammer</a></li>
-          <li><a class="dropdown-item" href="#">Drill</a></li>
-          <li><a class="dropdown-item" href="#">Paint</a></li>
-          <li><a class="dropdown-item" href="#">Nails</a></li>
-          <li><a class="dropdown-item" href="#">Woods</a></li>
-          <li><a class="dropdown-item" href="#">Cement</a></li>
-        </ul>
-      </div>
     </div>
     <!-- Product List -->
 
-<div class="item-container" id="item-list">
+<div class="item-container mt-5" id="item-list">
   <!-- search.js will fetch here all product -->
 </div>
 
+
 <!-- Pagination -->
-<div class="pagination-container">
-  <nav aria-label="...">
-    <ul class="pagination">
+<div class="pagination-container mb-5" id="pagination-container">
+
+    <!-- <ul class="pagination">
       <li class="page-item disabled">
         <a class="page-link">Previous</a>
       </li>
@@ -144,9 +130,11 @@
       <li class="page-item">
         <a class="page-link" href="#">Next</a>
       </li>
-    </ul>
-  </nav>
+    </ul> -->
+
+   
 </div>
+
 </section>
 </div>
 
@@ -240,5 +228,8 @@
   </footer>
   </section>
   <?php include 'pages/customer/links/footer.php' ?>
+  <script src="/assets/js/indexProduct.js"></script>
+  <script src="/assets/js/page.js"></script>
+  <script src="/assets/js/filterProduct.js"></script>
 </body>
 </html>

@@ -18,8 +18,10 @@
 
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 <script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/search.js"></script>
+<!-- <script src="/assets/js/search.js"></script> -->
+<!-- <script src="/assets/js/shopPage.js"></script>
+<script src="/assets/js/shopProduct.js"></script> -->
 <script>
 AOS.init();
 </script>
-<script src="/assets/js/indexsearch.js"></script>
+<!-- <script src="/assets/js/indexsearch.js"></script> -->

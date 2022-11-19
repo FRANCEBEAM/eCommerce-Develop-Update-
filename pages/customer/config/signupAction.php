@@ -25,7 +25,7 @@ $password = htmlspecialchars(trim($_POST['password']));
 
   
   if (empty($firstname) || empty($lastname) || empty($email) || empty($password)) {
-    echo '<div class="bg-danger text-white p-3 rounded-4">Please fill all required field</div>';
+    echo '<div class="alert alert-danger p-3 rounded-4">Please fill all required field</div>';
     }else{
 
     $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);

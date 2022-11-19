@@ -1,27 +1,66 @@
 <link rel="stylesheet" href="/assets/css/livesearch.css">
+
 <?php
 error_reporting(0);
-require 'config/connection.php';
-$output = '';
-if(isset($_POST["query"]))
+$connect = new PDO("mysql:host=localhost; dbname=rjavancena", "root", "");
+
+
+/*function get_total_row($connect)
 {
-	$search = mysqli_real_escape_string($conn, $_POST["query"]);
-	$query = "
-	SELECT * FROM inventory 
-	WHERE product LIKE '%".$search."%'";
+  $query = "
+  SELECT * FROM tbl_webslesson_post
+  ";
+  $statement = $connect->prepare($query);
+  $statement->execute();
+  return $statement->rowCount();
+}
+
+$total_record = get_total_row($connect);*/
+
+$limit = '12';
+$page = 1;
+if($_POST['page'] > 1)
+{
+  $start = (($_POST['page'] - 1) * $limit);
+  $page = $_POST['page'];
 }
 else
 {
-	$query = "
-	SELECT * FROM inventory ORDER BY id";
+  $start = 0;
 }
-$result = mysqli_query($conn, $query);
-if(mysqli_num_rows($result) > 0)
-{
 
-	while($row = mysqli_fetch_array($result))
-	{
-		$output .= '
+$query = "
+SELECT * FROM inventory 
+";
+
+if($_POST['query'] != '')
+{
+  $query .= '
+  WHERE product LIKE "%'.str_replace(' ', '%', $_POST['query']).'%" 
+  ';
+}
+
+$query .= 'ORDER BY id ASC ';
+
+$filter_query = $query . 'LIMIT '.$start.', '.$limit.'';
+
+$statement = $connect->prepare($query);
+$statement->execute();
+$total_data = $statement->rowCount();
+
+$statement = $connect->prepare($filter_query);
+$statement->execute();
+$result = $statement->fetchAll();
+$total_filter_data = $statement->rowCount();
+
+$output = '
+
+';
+if($total_data > 0)
+{
+  foreach($result as $row)
+  {
+    $output .= '
     <div class="mb-5 card-container" data-mdb-toggle="modal" data-mdb-target="#exampleModal'.$row["id"].'" style="cursor:pointer;">
 
     <img src='.$row["image_path"].' class="card-img-top">
@@ -73,29 +112,143 @@ if(mysqli_num_rows($result) > 0)
         <input type="hidden" class="image_path" value=" '.$row["image_path"].' ">
         <input type="hidden" class="serialnumber" value="  '.$row["serialnumber"].'  ">
 
-        <a href="/pages/customer/signin.php" class="btn d-md-block addItemBtn text-center" style="background:#0D6EFD"><i class="fa-solid fa-cart-shopping"></i> &nbsp;Add to cart</a> 
+        <a href="#" class="btn d-md-block addItemBtn text-center" style="background:#0D6EFD"><i class="fa-solid fa-cart-shopping"></i> &nbsp;Add to cart</a> 
       </form>
         </div>
       </div>
     </div>
   </div>
 </div>
-		';
-	}
-	echo $output;
+    ';
+  }
 }
 else
 {
-	echo '<h5>No product search found &nbsp;<iconify-icon icon="icon-park-outline:ad-product"></iconify-icon></h5>';
+  $output .= '
+  <tr>
+  <h5 class="mb-5">No product search found &nbsp;<iconify-icon icon="icon-park-outline:ad-product"></iconify-icon></h5>
+  </tr>
+  ';
 }
 
+
+$output .= '
+';
+
+$total_links = ceil($total_data/$limit);
+$previous_link = '';
+$next_link = '';
+$page_link = '';
+
+//echo $total_links;
+
+if($total_links > 4)
+{
+  if($page < 5)
+  {
+    for($count = 1; $count <= 5; $count++)
+    {
+      $page_array[] = $count;
+    }
+    $page_array[] = '...';
+    $page_array[] = $total_links;
+  }
+  else
+  {
+    $end_limit = $total_links - 5;
+    if($page > $end_limit)
+    {
+      $page_array[] = 1;
+      $page_array[] = '...';
+      for($count = $end_limit; $count <= $total_links; $count++)
+      {
+        $page_array[] = $count;
+      }
+    }
+    else
+    {
+      $page_array[] = 1;
+      $page_array[] = '...';
+      for($count = $page - 1; $count <= $page + 1; $count++)
+      {
+        $page_array[] = $count;
+      }
+      $page_array[] = '...';
+      $page_array[] = $total_links;
+    }
+  }
+}
+else
+{
+  for($count = 1; $count <= $total_links; $count++)
+  {
+    $page_array[] = $count;
+  }
+}
+if(!$total_data == 0) {
+for($count = 0; $count < count($page_array); $count++)
+{
+  if($page == $page_array[$count])
+  {
+    $page_link .= '
+   ';
+
+    $previous_id = $page_array[$count] - 1;
+    if($previous_id > 0)
+    {
+      $previous_link = '';
+    }
+    else
+    {
+      $previous_link = '
+      
+      ';
+    }
+    $next_id = $page_array[$count] + 1;
+    if($next_id > $total_links)
+    {
+      $next_link = '
+     
+        ';
+    }
+    else
+    {
+      $next_link = '';
+    }
+  }
+  else
+  {
+    if($page_array[$count] == '...')
+    {
+      $page_link .= '
+     
+      ';
+    }
+    else
+    {
+      $page_link .= '
+     
+      ';
+    }
+  }
+}
+}
+
+$output .= $previous_link . $page_link . $next_link;
+$output .= '
+
+';
+
+echo $output;
+
 ?>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="/assets/css/sweetalert2.min.css">
 <script src="/assets/js/sweetalert2.all.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/assets/js/addcart.js"></script>
 
 
 

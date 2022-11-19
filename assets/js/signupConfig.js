@@ -32,9 +32,9 @@ $(document).ready(function () {
 
 
       if (!checkFirstName() && !checkLastName() && !checkEmail() && !checkPassword() && !checkConPassword()) {
-          $("#message").html(`<div class="bg-danger text-white p-3 rounded-4"><i class="fas fa-exclamation-circle"></i> Please fill all required field</div>`);
+          $("#message").html(`<div class="alert alert-danger p-3 rounded-4"><i class="fas fa-exclamation-circle"></i> Please fill all required field</div>`);
       } else if (!checkFirstName() || !checkLastName() || !checkEmail() || !checkPassword() || !checkConPassword())  {
-          $("#message").html(`<div class="bg-danger text-white p-3 rounded-4"><i class="fas fa-exclamation-circle"></i> Please fill all required field</div>`);
+          $("#message").html(`<div class="alert alert-danger p-3 rounded-4"><i class="fas fa-exclamation-circle"></i> Please fill all required field</div>`);
       }
       else {
           console.log("ok");

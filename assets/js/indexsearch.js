@@ -11,6 +11,7 @@ $(document).ready(function(){
         success:function(data)
         {
           $('#item-list').html(data);
+          $('.pagination-container').style('display'),('none');
         }
       });
     }

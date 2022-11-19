@@ -14,9 +14,9 @@ $(document).ready(function () {
   
   
         if (!checkPassword() && !checkConPassword()) {
-            $("#message").html(`<div class="bg-danger text-white p-3 rounded-4"><i class="fas fa-exclamation-circle"></i>Please create new password</div>`);
+            $("#message").html(`<div class="alert alert-danger p-4 rounded-4"><i class="fas fa-exclamation-circle"></i> Please fill all fields</div>`);
         } else if (!checkPassword() || !checkConPassword())  {
-            $("#message").html(`<div class="bg-danger text-white p-3 rounded-4"><i class="fas fa-exclamation-circle"></i>Please create new password</div>`);
+            $("#message").html(`<div class="alert alert-danger p-4 rounded-4"><i class="fas fa-exclamation-circle"></i> Please fill all fields</div>`);
         }
         else {
             console.log("ok");
@@ -59,7 +59,7 @@ $(document).ready(function () {
     var validpass = regEx.test(password);
   
     if (password == "") {
-        $('#errorPassword').html('Please enter your password');
+        $('#errorPassword').html('Enter your new password');
         return false;
     } else if (!validpass) {
         $('#errorPassword').html('Password should atleast 7 characters, and one uppercase letter, one lowercase letter, one number');
